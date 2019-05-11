@@ -17,4 +17,6 @@
     <dubbo:reference id="TestService"
                      interface="com.yuyuyzl.SSS.ITestService"/>
 
+    <dubbo:reference id="DBService"
+                     interface="com.yuyuyzl.SSS.IDBService"/>
 </beans>
