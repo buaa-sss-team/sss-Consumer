@@ -15,6 +15,7 @@
     <title>Title</title>
 </head>
 <body>
-    hello ${param}
+    hello ${front}<br/>
+    hello ${back}<br/>
 </body>
 </html>
