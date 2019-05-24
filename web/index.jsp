@@ -37,7 +37,7 @@
 <p><%=content3 %></p>
 <br /><a href="test">go to test page</a>
 <form action="test">
-    用户名：<input type="text" name="name"/><br/>
+    用户名：<input type="text" name="name_id"/><br/>
     <button type="submit">submit</button>
 </form>
 </body>
