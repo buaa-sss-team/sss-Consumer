@@ -19,10 +19,6 @@
         <!--tian 原先版本下不了，切了个版本-->
         <dubboVersion>2.5.3</dubboVersion>
         <zookeeperVersion>3.3.3</zookeeperVersion>
-        <mysqlVersion>5.1.38</mysqlVersion>
-        <c3p0Version>0.9.1.2</c3p0Version>
-        <jsonVersion>1.9.13</jsonVersion>
-        <hibernateVersion>4.3.5.Final</hibernateVersion>
         <!--暂时未引入，Jackson可以轻松的将Java对象转换成json对象和xml文档,同样也可以将json、xml转换成Java对象-->
         <jacksonVersion>2.5.0</jacksonVersion>
             <!--tian-->
@@ -182,9 +178,6 @@
         <version>0.1</version>
     </dependency>
 
-
-
-
         <!-- **************************** /Dubbo 依赖 **************************** -->
 
     <!-- **************************** interface 依赖 **************************** -->
@@ -196,37 +189,43 @@
         <!-- **************************** /interface 依赖 **************************** -->
 
     <!-- **************************** hibernate 依赖 **************************** -->
-    <!-- hibernate配置-->
     <dependency>
         <groupId>org.hibernate</groupId>
         <artifactId>hibernate-core</artifactId>
-        <version>${hibernateVersion}</version>
+        <version>3.6.3.Final</version>
     </dependency>
-    <!-- DataBase数据库连接 mysql包-->
+
+    <dependency>
+        <groupId>javassist</groupId>
+        <artifactId>javassist</artifactId>
+        <version>3.12.1.GA</version>
+    </dependency>
+
+    <dependency>
+        <groupId>javax.servlet</groupId>
+        <artifactId>jstl</artifactId>
+        <version>1.2</version>
+        <scope>runtime</scope>
+    </dependency>
+
+    <dependency>
+        <groupId>taglibs</groupId>
+        <artifactId>standard</artifactId>
+        <version>1.1.2</version>
+        <scope>runtime</scope>
+    </dependency>
+
+    <dependency>
+        <groupId>commons-dbcp</groupId>
+        <artifactId>commons-dbcp</artifactId>
+        <version>1.4</version>
+    </dependency>
+
     <dependency>
         <groupId>mysql</groupId>
         <artifactId>mysql-connector-java</artifactId>
-        <version>${mysqlVersion}</version>
+        <version>5.1.9</version>
     </dependency>
-    <!-- 数据库连接池-->
-    <dependency>
-        <groupId>c3p0</groupId>
-        <artifactId>c3p0</artifactId>
-        <version>${c3p0Version}</version>
-    </dependency>
-    <!-- json数据 使springMVC可以返回json值 ,视情况添加-->
-    <dependency>
-        <groupId>org.codehaus.jackson</groupId>
-        <artifactId>jackson-mapper-asl</artifactId>
-        <version>${jsonVersion}</version>
-    </dependency>
-    <!-- https://mvnrepository.com/artifact/org.hibernate.javax.persistence/hibernate-jpa-2.1-api -->
-    <dependency>
-        <groupId>org.hibernate.javax.persistence</groupId>
-        <artifactId>hibernate-jpa-2.1-api</artifactId>
-        <version>1.0.0.Final</version>
-    </dependency>
-
         <!-- **************************** hibernate 依赖 **************************** -->
     </dependencies>
 </project>

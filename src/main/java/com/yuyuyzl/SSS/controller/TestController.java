@@ -32,8 +32,8 @@ public class TestController {
     public ModelAndView test(ModelMap m ,@RequestParam("name_id") int id) throws ServletException, IOException {
         ModelAndView mv = new ModelAndView("test");
         User user = userService.getUser(id);
-        mv.addObject("account",user.account);
-        mv.addObject("pwd",user.pwd);
+        mv.addObject("account",user.getAccount());
+        mv.addObject("pwd",user.getPwd());
         return mv;
     }
 }
