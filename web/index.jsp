@@ -2,7 +2,7 @@
          pageEncoding="UTF-8"%>
 <html>
 <head>
-    <title>life.jsp</title>
+    <title>Test Page</title>
 </head>
 <body>
 
@@ -35,6 +35,10 @@
 <p><%=content1 %></p>
 <p><%=content2 %></p>
 <p><%=content3 %></p>
-
+<br /><a href="test">go to test page</a>
+<form action="test">
+    用户名：<input type="text" name="name_id"/><br/>
+    <button type="submit">submit</button>
+</form>
 </body>
 </html>

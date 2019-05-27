@@ -15,6 +15,18 @@
         <junit.version>3.8.1</junit.version>
         <springframework.version>4.1.6.RELEASE</springframework.version>
         <commonsLogging.version>1.2</commonsLogging.version>
+
+        <!--tian 原先版本下不了，切了个版本-->
+        <dubboVersion>2.5.3</dubboVersion>
+        <zookeeperVersion>3.3.3</zookeeperVersion>
+        <!--暂时未引入，Jackson可以轻松的将Java对象转换成json对象和xml文档,同样也可以将json、xml转换成Java对象-->
+        <jacksonVersion>2.5.0</jacksonVersion>
+        <hibernateVersion>3.6.3.Final</hibernateVersion>
+        <jstlVersion>1.2</jstlVersion>
+        <dbcpVersion>1.4</dbcpVersion>
+        <mysqlVersion>5.1.9</mysqlVersion>
+            <!--tian-->
+
     </properties>
     <!-- **************************** /Properties 配置 **************************** -->
 
@@ -22,20 +34,20 @@
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>dubbo</artifactId>
-            <version>2.6.1</version>
+            <version>${dubboVersion}</version>
         </dependency>
 
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
-            <version>5.0.5.RELEASE</version>
+            <version>${springframework.version}</version>
         </dependency>
 
 
         <dependency>
             <groupId>org.apache.zookeeper</groupId>
             <artifactId>zookeeper</artifactId>
-            <version>3.4.10</version>
+            <version>${zookeeperVersion}</version>
         </dependency>
 
         <dependency>
@@ -114,6 +126,24 @@
         <artifactId>aspectjweaver</artifactId>
         <version>1.8.5</version>
     </dependency>
+    <!-- jsp页面使用的jstl支持-->
+    <dependency>
+        <groupId>org.springframework</groupId>
+        <artifactId>spring-webmvc</artifactId>
+        <version>${springframework.version}</version>
+    </dependency>
+
+    <dependency>
+        <groupId>javax.servlet</groupId>
+        <artifactId>servlet-api</artifactId>
+        <version>2.5</version>
+    </dependency>
+
+    <dependency>
+        <groupId>javax.servlet</groupId>
+        <artifactId>jstl</artifactId>
+        <version>1.2</version>
+    </dependency>
     <!-- **************************** /Spring 依赖 **************************** -->
 
     <!-- **************************** Dubbo 依赖 **************************** -->
@@ -153,9 +183,6 @@
         <version>0.1</version>
     </dependency>
 
-
-
-
         <!-- **************************** /Dubbo 依赖 **************************** -->
 
     <!-- **************************** interface 依赖 **************************** -->
@@ -166,11 +193,51 @@
     </dependency>
         <!-- **************************** /interface 依赖 **************************** -->
 
+    <!-- **************************** hibernate 依赖 **************************** -->
+    <dependency>
+        <groupId>org.hibernate</groupId>
+        <artifactId>hibernate-core</artifactId>
+        <version>${hibernateVersion}</version>
+    </dependency>
 
+    <dependency>
+        <groupId>javassist</groupId>
+        <artifactId>javassist</artifactId>
+        <version>3.12.1.GA</version>
+    </dependency>
+
+    <dependency>
+        <groupId>javax.servlet</groupId>
+        <artifactId>jstl</artifactId>
+        <version>${jstlVersion}</version>
+        <scope>runtime</scope>
+    </dependency>
+
+    <dependency>
+        <groupId>taglibs</groupId>
+        <artifactId>standard</artifactId>
+        <version>1.1.2</version>
+        <scope>runtime</scope>
+    </dependency>
+
+    <dependency>
+        <groupId>commons-dbcp</groupId>
+        <artifactId>commons-dbcp</artifactId>
+        <version>${dbcpVersion}</version>
+    </dependency>
+
+    <dependency>
+        <groupId>mysql</groupId>
+        <artifactId>mysql-connector-java</artifactId>
+        <version>${mysqlVersion}</version>
+    </dependency>
+        <!-- **************************** hibernate 依赖 **************************** -->
+    <!--支付宝依赖-->
         <dependency>
-            <groupId>javax.servlet</groupId>
-            <artifactId>servlet-api</artifactId>
-            <version>2.5</version>
+            <groupId>com.alipay.sdk</groupId>
+            <artifactId>alipay-sdk-java</artifactId>
+            <version>3.7.26.ALL</version>
         </dependency>
+        <!--支付宝依赖-->
     </dependencies>
 </project>
