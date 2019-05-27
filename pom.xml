@@ -21,7 +21,12 @@
         <zookeeperVersion>3.3.3</zookeeperVersion>
         <!--暂时未引入，Jackson可以轻松的将Java对象转换成json对象和xml文档,同样也可以将json、xml转换成Java对象-->
         <jacksonVersion>2.5.0</jacksonVersion>
+        <hibernateVersion>3.6.3.Final</hibernateVersion>
+        <jstlVersion>1.2</jstlVersion>
+        <dbcpVersion>1.4</dbcpVersion>
+        <mysqlVersion>5.1.9</mysqlVersion>
             <!--tian-->
+
     </properties>
     <!-- **************************** /Properties 配置 **************************** -->
 
@@ -192,7 +197,7 @@
     <dependency>
         <groupId>org.hibernate</groupId>
         <artifactId>hibernate-core</artifactId>
-        <version>3.6.3.Final</version>
+        <version>${hibernateVersion}</version>
     </dependency>
 
     <dependency>
@@ -204,7 +209,7 @@
     <dependency>
         <groupId>javax.servlet</groupId>
         <artifactId>jstl</artifactId>
-        <version>1.2</version>
+        <version>${jstlVersion}</version>
         <scope>runtime</scope>
     </dependency>
 
@@ -218,14 +223,21 @@
     <dependency>
         <groupId>commons-dbcp</groupId>
         <artifactId>commons-dbcp</artifactId>
-        <version>1.4</version>
+        <version>${dbcpVersion}</version>
     </dependency>
 
     <dependency>
         <groupId>mysql</groupId>
         <artifactId>mysql-connector-java</artifactId>
-        <version>5.1.9</version>
+        <version>${mysqlVersion}</version>
     </dependency>
         <!-- **************************** hibernate 依赖 **************************** -->
+    <!--支付宝依赖-->
+        <dependency>
+            <groupId>com.alipay.sdk</groupId>
+            <artifactId>alipay-sdk-java</artifactId>
+            <version>3.7.26.ALL</version>
+        </dependency>
+        <!--支付宝依赖-->
     </dependencies>
 </project>
