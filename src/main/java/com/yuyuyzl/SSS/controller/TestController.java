@@ -1,9 +1,8 @@
 package com.yuyuyzl.SSS.controller;
 
 import com.sun.jmx.snmp.SnmpUnknownModelLcdException;
-import com.yuyuyzl.SSS.model.User;
-import com.yuyuyzl.SSS.service.TestUserService;
-import com.yuyuyzl.SSS.service.imp.TestUserServiceImp;
+import com.yuyuyzl.SSS.models.TestUser;
+import com.yuyuyzl.SSS.ITestUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
@@ -26,12 +25,12 @@ import java.util.List;
 @RequestMapping("/")
 public class TestController {
     @Autowired
-    private TestUserService userService;
+    private ITestUserService userService;
 
     @RequestMapping(value = "/test" , method = RequestMethod.GET)
     public ModelAndView test(ModelMap m ,@RequestParam("name_id") int id) throws ServletException, IOException {
         ModelAndView mv = new ModelAndView("test");
-        User user = userService.getUser(id);
+        TestUser user = userService.getUser(id);
         mv.addObject("account",user.getAccount());
         mv.addObject("pwd",user.getPwd());
         return mv;

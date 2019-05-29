@@ -12,6 +12,7 @@ import java.sql.Timestamp;
 
 public class TestDBServiceConsumer {
     private static Logger logger = LoggerFactory.getLogger(TestDBServiceConsumer.class);
+
     public static void main(String []args)throws SQLException {
         ApplicationContext ctx = new ClassPathXmlApplicationContext("spring.xml");
 

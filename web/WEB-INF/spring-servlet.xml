@@ -31,39 +31,37 @@
         <property name="suffix" value=".jsp"/>
     </bean>
 
-    <bean id="propertyConfigurer"
-          class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"
-          p:location="/WEB-INF/jdbc.properties" />
+    <!--<bean id="propertyConfigurer"-->
+          <!--class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"-->
+          <!--p:location="/WEB-INF/jdbc.properties" />-->
 
-    <bean id="dataSource"
-          class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close"
-          p:driverClassName="${jdbc.driver}"
-          p:url="${jdbc.url}"
-          p:username="${jdbc.username}"
-          p:password="${jdbc.password}" />
+    <!--<bean id="dataSource"-->
+          <!--class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close"-->
+          <!--p:driverClassName="${jdbc.driver}"-->
+          <!--p:url="${jdbc.url}"-->
+          <!--p:username="${jdbc.username}"-->
+          <!--p:password="${jdbc.password}" />-->
 
-    <bean id="sessionFactory"
-          class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
-        <property name="dataSource" ref="dataSource" />
-        <property name="configLocation">
-            <value>classpath:hibernate.cfg.xml</value>
-        </property>
-        <property name="configurationClass">
-            <value>org.hibernate.cfg.AnnotationConfiguration</value>
-        </property>
-        <property name="hibernateProperties">
-            <props>
-                <prop key="hibernate.dialect">${hibernate.dialect}</prop>
-                <prop key="hibernate.show_sql">${hibernate.show_sql}</prop>
-            </props>
-        </property>
-    </bean>
+    <!--<bean id="sessionFactory"-->
+          <!--class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">-->
+        <!--<property name="dataSource" ref="dataSource" />-->
+        <!--<property name="configLocation">-->
+            <!--<value>classpath:hibernate.cfg.xml</value>-->
+        <!--</property>-->
+        <!--<property name="configurationClass">-->
+            <!--<value>org.hibernate.cfg.AnnotationConfiguration</value>-->
+        <!--</property>-->
+        <!--<property name="hibernateProperties">-->
+            <!--<props>-->
+                <!--<prop key="hibernate.dialect">${hibernate.dialect}</prop>-->
+                <!--<prop key="hibernate.show_sql">${hibernate.show_sql}</prop>-->
+            <!--</props>-->
+        <!--</property>-->
+    <!--</bean>-->
 
-    <!--<bean id="TestUserDaoImp" class="com.yuyuyzl.SSS.dao.imp.TestUserDaoImp"></bean>-->
-    <!--<bean id="TestUserService" class="com.yuyuyzl.SSS.service.imp.TestUserServiceImp"></bean>-->
-    <bean id="transactionManager"
-          class="org.springframework.orm.hibernate3.HibernateTransactionManager">
-        <property name="sessionFactory" ref="sessionFactory" />
-    </bean>
-    <tx:annotation-driven proxy-target-class="true" transaction-manager="transactionManager"/>
+    <!--<bean id="transactionManager"-->
+          <!--class="org.springframework.orm.hibernate3.HibernateTransactionManager">-->
+        <!--<property name="sessionFactory" ref="sessionFactory" />-->
+    <!--</bean>-->
+    <!--<tx:annotation-driven proxy-target-class="true" transaction-manager="transactionManager"/>-->
 </beans>
