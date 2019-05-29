@@ -8,25 +8,18 @@
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
 
-
     <!-- **************************** Properties 配置 **************************** -->
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <junit.version>3.8.1</junit.version>
+        <junit.version>4.12</junit.version>
         <springframework.version>4.1.6.RELEASE</springframework.version>
         <commonsLogging.version>1.2</commonsLogging.version>
-
-        <!--tian 原先版本下不了，切了个版本-->
-        <dubboVersion>2.5.3</dubboVersion>
-        <zookeeperVersion>3.3.3</zookeeperVersion>
-        <!--暂时未引入，Jackson可以轻松的将Java对象转换成json对象和xml文档,同样也可以将json、xml转换成Java对象-->
-        <jacksonVersion>2.5.0</jacksonVersion>
         <hibernateVersion>3.6.3.Final</hibernateVersion>
         <jstlVersion>1.2</jstlVersion>
         <dbcpVersion>1.4</dbcpVersion>
         <mysqlVersion>5.1.9</mysqlVersion>
-            <!--tian-->
-
+        <dubboVersion>2.6.1</dubboVersion>
+        <zooVersion>3.4.11</zooVersion>
     </properties>
     <!-- **************************** /Properties 配置 **************************** -->
 
@@ -150,7 +143,7 @@
     <dependency>
         <groupId>com.alibaba</groupId>
         <artifactId>dubbo</artifactId>
-        <version>2.5.3</version>
+        <version>${dubboVersion}</version>
         <exclusions>
             <exclusion>
                 <groupId>org.springframework</groupId>
@@ -161,7 +154,7 @@
     <dependency>
         <groupId>org.apache.zookeeper</groupId>
         <artifactId>zookeeper</artifactId>
-        <version>3.3.3</version>
+        <version>${zooVersion}</version>
         <exclusions>
             <exclusion>
                 <groupId>com.sun.jmx</groupId>
@@ -232,12 +225,5 @@
         <version>${mysqlVersion}</version>
     </dependency>
         <!-- **************************** hibernate 依赖 **************************** -->
-    <!--支付宝依赖-->
-        <dependency>
-            <groupId>com.alipay.sdk</groupId>
-            <artifactId>alipay-sdk-java</artifactId>
-            <version>3.7.26.ALL</version>
-        </dependency>
-        <!--支付宝依赖-->
     </dependencies>
 </project>
