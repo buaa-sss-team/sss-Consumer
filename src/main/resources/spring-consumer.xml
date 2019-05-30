@@ -16,12 +16,12 @@
     <dubbo:protocol port="28080"/>
     <!-- 提供哪些接口给消费者调用 -->
     <dubbo:reference id="TestService"
-                     interface="com.sss.consumer.ITestService"/>
+                     interface="com.sss.interfaces.ITestService"/>
 
     <dubbo:reference id="DBService"
-                     interface="com.sss.consumer.IDBService"/>
+                     interface="com.sss.interfaces.IDBService"/>
 
-    <dubbo:reference interface="com.sss.consumer.ITestUserService"
+    <dubbo:reference interface="com.sss.interfaces.ITestUserService"
                     id="TUService"/>
 
     <!--	扫描注解包路径，多个包用逗号分隔，不填pacakge表示扫描当前ApplicationContext中所有的类	-->
