@@ -1,6 +1,7 @@
-package com.yuyuyzl.SSS;
+package com.sss.consumer;
 
-import com.yuyuyzl.SSS.models.*;
+import com.sss.interfaces.model.*;
+import com.sss.interfaces.IDBService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationContext;

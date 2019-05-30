@@ -1,4 +1,4 @@
-package com.yuyuyzl.SSS.web;
+package com.sss.consumer.web;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;

@@ -1,6 +1,6 @@
-package com.yuyuyzl.SSS;
+package com.sss.consumer;
 
-import com.yuyuyzl.SSS.ITestService;
+import com.sss.interfaces.ITestService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationContext;
