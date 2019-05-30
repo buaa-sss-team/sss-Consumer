@@ -1,6 +1,6 @@
-package com.yuyuyzl.SSS.web;
+package com.sss.consumer.web;
 
-import com.yuyuyzl.SSS.ITestService;
+import com.sss.interfaces.ITestService;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 

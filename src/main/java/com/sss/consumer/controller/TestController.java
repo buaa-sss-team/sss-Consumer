@@ -1,28 +1,18 @@
-package com.yuyuyzl.SSS.controller;
+package com.sss.consumer.controller;
 
-import com.sun.jmx.snmp.SnmpUnknownModelLcdException;
-import com.yuyuyzl.SSS.IDBService;
-import com.yuyuyzl.SSS.models.*;
-import com.yuyuyzl.SSS.models.TestUser;
-import com.yuyuyzl.SSS.ITestUserService;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.sss.interfaces.IDBService;
+import com.sss.interfaces.model.*;
+import com.sss.interfaces.model.TestUser;
+import com.sss.interfaces.ITestUserService;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
-import javax.annotation.Resource;
-import javax.servlet.Servlet;
 import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
-
-
-import java.util.List;
 
 @Controller
 @RequestMapping("/")
