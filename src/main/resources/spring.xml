@@ -4,7 +4,13 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd ">
 
     <!-- **************************** 导入其他XML文件 **************************** -->
-    <import resource="spring-consumer.xml"/>
+
+    <!--为什么注释下面这一句：配置了listener，如果不注释，会报Duplicate spring bean id的错，也就是bean被注册两次-->
+    <!--个人猜测原因是在扫描res下的配置文件时，扫描这个文件发现有xxx-consumer.xml会进去扫描并注册bean，但是-->
+    <!--xxx-consumer.xml也在res文件夹下，会第二次扫描到这个文件，导致又注册一次，网上查原因是说新版的dubbo-->
+    <!--第二次扫描到某个bean会抛异常而不是覆盖，仅以app运行时需要-->
+    <!--<import resource="spring-consumer.xml"/>-->
+
     <!-- **************************** /导入其他XML文件 **************************** -->
 
 </beans>

@@ -1,10 +1,13 @@
 package com.yuyuyzl.SSS.controller;
 
 import com.sun.jmx.snmp.SnmpUnknownModelLcdException;
+import com.yuyuyzl.SSS.IDBService;
+import com.yuyuyzl.SSS.models.*;
 import com.yuyuyzl.SSS.models.TestUser;
 import com.yuyuyzl.SSS.ITestUserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,15 +27,19 @@ import java.util.List;
 @Controller
 @RequestMapping("/")
 public class TestController {
-    @Autowired
-    private ITestUserService userService;
+    //@Reference注入的是分布式中的远程服务对象，@Resource和@Autowired注入的是本地spring容器中的对象。
+    @com.alibaba.dubbo.config.annotation.Reference
+    private IDBService idbService;
 
     @RequestMapping(value = "/test" , method = RequestMethod.GET)
     public ModelAndView test(ModelMap m ,@RequestParam("name_id") int id) throws ServletException, IOException {
+        ApplicationContext ctx = new ClassPathXmlApplicationContext("spring-consumer.xml");
+        idbService = ctx.getBean(IDBService.class);
+        user user = idbService.queryUser(id);
         ModelAndView mv = new ModelAndView("test");
-        TestUser user = userService.getUser(id);
-        mv.addObject("account",user.getAccount());
-        mv.addObject("pwd",user.getPwd());
+        //TestUser user = userService.getUser(id);
+        mv.addObject("account",user.getName());
+        mv.addObject("pwd",user.getPassword());
         return mv;
     }
 }
