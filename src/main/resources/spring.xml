@@ -9,7 +9,7 @@
     <!--个人猜测原因是在扫描res下的配置文件时，扫描这个文件发现有xxx-consumer.xml会进去扫描并注册bean，但是-->
     <!--xxx-consumer.xml也在res文件夹下，会第二次扫描到这个文件，导致又注册一次，网上查原因是说新版的dubbo-->
     <!--第二次扫描到某个bean会抛异常而不是覆盖，仅以app运行时需要-->
-    <!--<import resource="spring-consumer.xml"/>-->
+    <import resource="spring-consumer.xml"/>
 
     <!-- **************************** /导入其他XML文件 **************************** -->
 
