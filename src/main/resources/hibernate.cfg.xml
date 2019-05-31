@@ -12,7 +12,9 @@
     <!--  数据库的方言 -->
     <property name="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</property>
     <!-- 2.其他相关配置 -->
+    <property name="hibernate.current_session_context_class">org.hibernate.context.ThreadLocalSessionContext</property>
     <!-- 2.1 显示hibernate在运行时候执行的sql语句 -->
+
     <property name="hibernate.show_sql">true</property>
     <!-- 2.2 格式化sql -->
     <property name="hibernate.format_sql">true</property>
@@ -20,7 +22,22 @@
     <property name="hibernate.hbm2ddl.auto">update</property>
 
     <!--3. 加载所有映射 -->
-    <mapping class="com.sss.interfaces.model.TestUser"></mapping>
+    <mapping class="com.sss.interfaces.model.TestUser"/>
 
+    <mapping class="com.sss.interfaces.hmodel.User"/>
+    <mapping class="com.sss.interfaces.hmodel.Logs"/>
+    <mapping class="com.sss.interfaces.hmodel.Administrator"/>
+    <mapping class="com.sss.interfaces.hmodel.Auditapplication"/>
+    <mapping class="com.sss.interfaces.hmodel.BoughtScientificRes"/>
+    <mapping class="com.sss.interfaces.hmodel.BuyRes"/>
+    <mapping class="com.sss.interfaces.hmodel.Expert"/>
+    <mapping class="com.sss.interfaces.hmodel.Message"/>
+    <mapping class="com.sss.interfaces.hmodel.ModifySciRes"/>
+    <mapping class="com.sss.interfaces.hmodel.Paper"/>
+    <mapping class="com.sss.interfaces.hmodel.Patent"/>
+    <mapping class="com.sss.interfaces.hmodel.Payment"/>
+    <mapping class="com.sss.interfaces.hmodel.ScientificRes"/>
+    <mapping class="com.sss.interfaces.hmodel.SettleIn"/>
+    <mapping class="com.sss.interfaces.hmodel.Transaction"/>
   </session-factory>
 </hibernate-configuration>
