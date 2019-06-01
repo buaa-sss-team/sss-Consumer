@@ -35,10 +35,18 @@
 <p><%=content1 %></p>
 <p><%=content2 %></p>
 <p><%=content3 %></p>
-<br /><a href="test">go to test page</a>
 <form action="test">
     id号：<input type="text" name="name_id"/><br/>
     <button type="submit">submit</button>
 </form>
+
+<form action="fileupload" enctype="multipart/form-data" method="post">
+    <p>请选择文件</p>
+    <input type="file" name="file">
+    <p>上传文件</p>
+    <p><input type="submit" value="上传"></p>
+</form>
+
+<a href="/filedownload/10091.jpg" >下载10091.jpg</a>
 </body>
 </html>

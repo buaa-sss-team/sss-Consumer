@@ -15,7 +15,7 @@ import javax.servlet.ServletException;
 import java.io.IOException;
 
 @Controller
-@RequestMapping("/")
+//@RequestMapping("/")
 public class TestController {
     //@Reference注入的是分布式中的远程服务对象，@Resource和@Autowired注入的是本地spring容器中的对象。
     @com.alibaba.dubbo.config.annotation.Reference
@@ -27,9 +27,9 @@ public class TestController {
         idbService = ctx.getBean(IDBService.class);
         user user = idbService.queryUser(id);
         ModelAndView mv = new ModelAndView("test");
-        //TestUser user = userService.getUser(id);
         mv.addObject("account",user.getName());
         mv.addObject("pwd",user.getPassword());
+
         return mv;
     }
 }
