@@ -1,8 +1,11 @@
 package com.sss.consumer.controller;
 
 import com.alibaba.dubbo.config.annotation.Reference;
+import com.sss.interfaces.IDBService;
 import com.sss.interfaces.service.FileService;
 import org.apache.commons.io.FileUtils;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -27,12 +30,16 @@ public class FileController {
     @RequestMapping(value = "/fileupload", method = RequestMethod.POST)
     public String upload(@RequestParam("file")MultipartFile file , HttpServletRequest request)
             throws ServletException, IOException {
+        ApplicationContext ctx = new ClassPathXmlApplicationContext("spring-consumer.xml");
+        fileService = ctx.getBean(FileService.class);
         fileService.FileUpload(file);
         return "test2";
     }
 
-    @RequestMapping(value = "/filedownload/{filename}")
+    @RequestMapping(value = "/filedownload/{filename.+}")
     public ResponseEntity<byte[]> download(@PathVariable("filename") String filename, HttpServletRequest req) throws ServletException,IOException{
+        ApplicationContext ctx = new ClassPathXmlApplicationContext("spring-consumer.xml");
+        fileService = ctx.getBean(FileService.class);
         return fileService.FileDownload(filename);
     }
 }
