@@ -1,0 +1,165 @@
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI","微软雅黑 Light", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+.navbar-brand .icon{
+    margin-left: 8px;
+    margin-right: 8px;
+}
+
+.navbar-dark .navbar-nav .nav-link{
+    color: #fff;
+}
+
+.navbar-light .navbar-nav .nav-link{
+    color: #111;
+}
+
+@media (min-width: 768px) {
+    .navbar-expand-md .navbar-nav .nav-link {
+        padding-right: .8rem;
+        padding-left: .8rem;
+    }
+}
+
+.bg-white{
+    background-color: #fff !important;
+    box-shadow: 0px 0px 5px #aaa;
+}
+
+.logowhite{
+    display: none;
+}
+
+.logoblack{
+    display: none;
+}
+
+.navbar-dark .logowhite{
+    display: block;
+}
+
+.navbar-light .logoblack{
+    display: block;
+}
+
+.herovideowrap{
+    width:100%;
+    position: absolute;
+    padding-bottom: 800px;
+    height: 0;
+    overflow: hidden;
+    align-content: center;
+    vertical-align: center;
+}
+
+.herovideo{
+    position: absolute;
+    width: 1920px;
+    height: 1080px;
+    min-width: 100%;
+    min-height: 100%;
+    top:50%;
+    left:50%;
+    margin-left:-960px;
+    margin-top:-540px;
+}
+
+.herodiv{
+    height: 800px;
+    padding-top:200px;
+    margin-bottom: 200px
+}
+
+.div2{
+    height: 800px;
+    padding-top:150px;
+    margin-bottom: 200px
+}
+
+.div1.card{
+    background-image: url("../img/transparent.png");
+    transition: background-image 500ms;
+    background-position: 50% 50%;
+    background-repeat: no-repeat;
+}
+
+.div1 .card-body1{
+    height: 250px;
+}
+
+.div2 a{
+    color: #eee;
+}
+.div2 a:hover{
+    text-decoration: none;
+}
+
+
+.mouseover-border{
+    border: 0;
+    box-shadow: 0px 0px 5px #fff0;
+    transition: box-shadow 300ms;
+
+}
+.mouseover-border:hover{
+    box-shadow: 0px 0px 5px #fff !important;
+}
+
+.div2 .card{
+    width: 28rem;
+}
+
+.octicon {
+    fill: currentColor;
+    margin-left: auto;
+    margin-right: 15px;
+    height: auto;
+    vertical-align: text-bottom;
+    display: inline-block;
+}
+
+
+
+
+.preloader{
+    display: none;
+    width: 0;
+    height:0;
+}
+
+.div3{
+    padding-top:100px;
+    padding-bottom: 100px;
+    height: 500px;
+}
+
+.footer{
+    background-color: #333;
+    height: 350px;
+    margin-bottom: 0!important;
+}
+.footer p{
+    margin-bottom: 5px;
+}
+
+.commentArea{
+    margin-bottom: 20px;
+}
+
+.innerHero{
+    background:linear-gradient(to left, #111 0%, #333 20%,#333 80%, #111 100%);
+    padding-top: 200px;
+    margin-bottom: 100px;
+}
+
+.innerHero h4{
+    text-align: center;
+    color: #eee;
+}
+.innerHero p{
+    text-align: center;
+    color: #aaa;
+}
+
