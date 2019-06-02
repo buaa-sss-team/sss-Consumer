@@ -28,6 +28,9 @@
 
     <dubbo:reference interface="com.sss.interfaces.dao.IHDBdao"
                      id="HDBdao"/>
+
+    <dubbo:reference interface="com.sss.interfaces.IESService"
+                     id="ESService"/>
     <!--	扫描注解包路径，多个包用逗号分隔，不填pacakge表示扫描当前ApplicationContext中所有的类	-->
     <dubbo:annotation package="com.sss.consumer"/>
 </beans>
