@@ -13,7 +13,7 @@ import java.util.List;
 public class TestHibernate {
     private static Logger logger = LoggerFactory.getLogger(TestHibernate.class);
     public static void main(String args[]){
-        ApplicationContext ctx = new ClassPathXmlApplicationContext("spring.xml");
+        ApplicationContext ctx = new ClassPathXmlApplicationContext("spring-consumer.xml");
         IHDBdao hdbdao=ctx.getBean(IHDBdao.class);
 
         User x=new User();
