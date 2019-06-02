@@ -24,22 +24,62 @@ import java.io.IOException;
 
 @Controller
 public class FileController {
-    @Reference
-    private FileService fileService;
+//    @Reference
+    private FileService fileService=new FileServiceImpl();
+
+    public class FileServiceImpl implements FileService {
+        // 1为有错误，0为正常返回
+        public int FileUpload(MultipartFile file) {
+            if (!file.isEmpty()){
+                String storePath= "D:\\test";//存放我们上传的文件路径
+                String fileName = file.getOriginalFilename();
+                java.io.File filepath = new java.io.File(storePath, fileName);
+                if (!filepath.getParentFile().exists()) {
+                    filepath.getParentFile().mkdirs();//如果目录不存在，创建目录
+                }
+                try {
+                    file.transferTo(new java.io.File(storePath+ java.io.File.separator+fileName));//把文件写入目标文件地址
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    return 0;
+                }
+                return 1;
+            }
+            return 0;
+        }
+        //使用最新的Firefox、Chrome、Opera、Safari则都可以正常下载文件名为中文的文件了
+        //没考虑文件名不存在或错误
+        public ResponseEntity<byte[]> FileDownload(String filename) {
+            ResponseEntity<byte[]> res = null;
+            String downloadFilePath = "D:\\test";
+            File file = new File(downloadFilePath+File.separator+filename);
+            HttpHeaders headers = new HttpHeaders();
+            try {
+                String downloadFileName = new String(filename.getBytes("UTF-8"),"iso-8859-1");
+                headers.setContentDispositionFormData("attachment" , downloadFileName);
+                headers.setContentType(MediaType.APPLICATION_OCTET_STREAM);
+                res = new ResponseEntity<byte[]>(FileUtils.readFileToByteArray(file) , headers, HttpStatus.OK);
+            }catch (IOException e){
+                return res;
+            }
+            return res;
+        }
+    }
+
 
     @RequestMapping(value = "/fileupload", method = RequestMethod.POST)
     public String upload(@RequestParam("file")MultipartFile file , HttpServletRequest request)
             throws ServletException, IOException {
-        ApplicationContext ctx = new ClassPathXmlApplicationContext("spring-consumer.xml");
-        fileService = ctx.getBean(FileService.class);
+//        ApplicationContext ctx = new ClassPathXmlApplicationContext("spring-consumer.xml");
+//        fileService = ctx.getBean(FileService.class);
         fileService.FileUpload(file);
         return "test2";
     }
 
-    @RequestMapping(value = "/filedownload/{filename.+}")
+    @RequestMapping(value = "/filedownload/{filename:.+}")
     public ResponseEntity<byte[]> download(@PathVariable("filename") String filename, HttpServletRequest req) throws ServletException,IOException{
-        ApplicationContext ctx = new ClassPathXmlApplicationContext("spring-consumer.xml");
-        fileService = ctx.getBean(FileService.class);
+        //ApplicationContext ctx = new ClassPathXmlApplicationContext("spring-consumer.xml");
+        //fileService = ctx.getBean(FileService.class);
         return fileService.FileDownload(filename);
     }
 }
