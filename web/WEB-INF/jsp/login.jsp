@@ -23,14 +23,14 @@
                 </svg>
                     Scholar Social/Search Service</a>
 
-                <form style="padding: 0 4px">
+                <form style="padding: 0 4px" method="post">
                     <div class="form-group">
                         <label for="loginUsername">用户名</label>
-                        <input type="email" class="form-control" id="loginUsername" aria-describedby="emailHelp" placeholder="">
+                        <input type="text" class="form-control" name="username" id="loginUsername" placeholder="">
                     </div>
                     <div class="form-group">
                         <label for="loginPwd">密码</label>
-                        <input type="password" class="form-control" id="loginPwd" placeholder="">
+                        <input type="password" class="form-control" name="password" id="loginPwd" placeholder="">
                     </div>
 <%--                    <div class="form-group form-check">--%>
 <%--                        <input type="checkbox" class="form-check-input" id="exampleCheck1">--%>

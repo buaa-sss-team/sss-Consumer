@@ -25,7 +25,8 @@
 
     <dubbo:reference interface="com.sss.interfaces.ITestUserService"
                     id="TUService"/>
-
+    <dubbo:reference interface="com.sss.interfaces.service.Authorization"
+                     id="Authorization"/>
     <dubbo:reference interface="com.sss.interfaces.dao.IHDBdao"
                      id="HDBdao"/>
     <!--	扫描注解包路径，多个包用逗号分隔，不填pacakge表示扫描当前ApplicationContext中所有的类	-->
