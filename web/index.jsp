@@ -35,7 +35,7 @@
 <p><%=content1 %></p>
 <p><%=content2 %></p>
 <p><%=content3 %></p>
-<form action="test">
+<form action="test2">
     id号：<input type="text" name="name_id"/><br/>
     <button type="submit">submit</button>
 </form>

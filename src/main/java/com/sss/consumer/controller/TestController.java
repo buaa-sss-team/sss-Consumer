@@ -1,11 +1,14 @@
 package com.sss.consumer.controller;
 
+import com.alibaba.dubbo.config.annotation.Reference;
 import com.sss.consumer.DubboServices;
 import com.sss.interfaces.IDBService;
+import com.sss.interfaces.dao.IHDBdao;
 import com.sss.interfaces.hmodel.User;
 import com.sss.interfaces.model.*;
 import com.sss.interfaces.model.TestUser;
 import com.sss.interfaces.ITestUserService;
+import com.sss.interfaces.service.CommonService;
 import com.sss.interfaces.service.InquireService;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -23,8 +26,9 @@ public class TestController {
     //@Reference注入的是分布式中的远程服务对象，@Resource和@Autowired注入的是本地spring容器中的对象。
     //@com.alibaba.dubbo.config.annotation.Reference
     @com.alibaba.dubbo.config.annotation.Reference
-    private InquireService inquireService;
-
+    private CommonService service;
+    @Reference
+    private IHDBdao ihdBdao;
     @RequestMapping(value = "/test" , method = RequestMethod.GET)
     public ModelAndView test(ModelMap m ,@RequestParam("name_id") int id) throws ServletException, IOException {
         user user = DubboServices.INSTANCE.dbService.queryUser(id);
@@ -37,10 +41,11 @@ public class TestController {
     @RequestMapping(value = "/test2" , method = RequestMethod.GET)
     public ModelAndView test2(ModelMap m ,@RequestParam("name_id") int id) throws ServletException, IOException {
         ModelAndView mv = new ModelAndView("test");
-        if (inquireService != null){
-            User user = inquireService.getUserInfo(id);
-            mv.addObject("account",user.getAccount());
-            mv.addObject("pwd",user.getPassword());
+        if (service != null){
+            User user = service.getUserInfo(1);
+            int temp = ihdBdao.delete(u ser);
+            mv.addObject("account",temp);
+            mv.addObject("pwd",temp);
         }
         return mv;
     }
