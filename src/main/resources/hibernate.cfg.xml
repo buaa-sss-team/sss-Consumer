@@ -6,7 +6,7 @@
   <session-factory>
     <!-- 1.数据库连接配置 -->
     <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
-    <property name="hibernate.connection.url">jdbc:mysql://132.232.169.70:3306/sss-team</property>
+    <property name="hibernate.connection.url">jdbc:mysql://132.232.169.70:3306/sss</property>
     <property name="hibernate.connection.username">root</property>
     <property name="hibernate.connection.password">8280508</property>
     <!--  数据库的方言 -->
