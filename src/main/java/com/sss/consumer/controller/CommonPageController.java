@@ -1,10 +1,10 @@
 package com.sss.consumer.controller;
 
+import com.sss.consumer.DubboServices;
 import com.sss.interfaces.hmodel.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.ServletException;
@@ -28,4 +28,6 @@ public class CommonPageController {
         }else mv.addObject("user",null);
         return mv;
     }
+
+
 }

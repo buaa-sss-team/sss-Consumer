@@ -22,7 +22,7 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <p id="noteModalText">登录失败，请检查您输入的用户名和密码</p>
+                    <p id="noteModalText">注册失败，请检查您输入的信息</p>
                 </div>
             </div>
         </div>
