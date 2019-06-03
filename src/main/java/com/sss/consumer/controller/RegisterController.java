@@ -39,7 +39,7 @@ public class RegisterController extends CommonPageController {
         user.setInfo(gson.toJson(obj));
         user.setType(1);
 
-        if(DubboServices.INSTANCE.authorization.userSignIn(user)==0){
+        if(DubboServices.INSTANCE.commonService.userSignIn(user)==0){
             session.setAttribute("currentUserName",userName);
             return "redirect:/";
         }

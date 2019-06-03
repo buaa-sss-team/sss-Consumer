@@ -22,12 +22,18 @@ public class LoginController {
 
     @RequestMapping(value = "/login" , method = RequestMethod.POST)
     public String post(ModelMap m, @RequestParam("username")String userName, @RequestParam("password")String password, HttpSession session) throws ServletException, IOException {
-        if(DubboServices.INSTANCE.authorization.userLogin(userName,password)==0){
+        if(DubboServices.INSTANCE.commonService.userLogin(userName,password)==0){
             session.setAttribute("currentUserName",userName);
             return "redirect:/";
         }
 
         return "redirect:/login?alert=Failed";
+    }
+
+    @RequestMapping(value = "/logout")
+    public String logout(ModelMap m,HttpSession session) throws ServletException, IOException {
+        session.removeAttribute("currentUserName");
+        return "redirect:/";
     }
 
 }
