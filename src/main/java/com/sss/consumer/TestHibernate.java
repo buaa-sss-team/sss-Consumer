@@ -16,34 +16,6 @@ public class TestHibernate {
         ApplicationContext ctx = new ClassPathXmlApplicationContext("spring-consumer.xml");
         IHDBdao hdbdao=ctx.getBean(IHDBdao.class);
 
-        User x=new User();
-        x.setId(1);
-        x.setName("LiMing");
-        x.setBoughtThings("");
-        x.setCredit(40);
-        x.setPassword("Safe");
-        x.setPersonalInformationJson("");
-        hdbdao.insert(x);
-       // hdbdao.insertUser(x);
-
-        x.setId(3);
-        x.setName("LiMing");
-        hdbdao.insert(x);
-        //hdbdao.insertUser(x);
-
-
-        List<User> z;
-        z=hdbdao.getUserByName("LiMing");
-        logger.info("#######################输出结果:#####################");
-        Iterator<User>it=z.iterator();
-        while(it.hasNext()){
-            Integer tem=it.next().getId();
-            logger.info(tem.toString());
-        }
-
-        User y=(User)hdbdao.getByID(User.class,1);
-        logger.info(y.getName());
-        logger.info(y.getPassword());
 
     }
 }
