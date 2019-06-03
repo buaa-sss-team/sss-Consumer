@@ -32,10 +32,13 @@
                 <li class="nav-item">
                     <a class="nav-link" href="login">登录</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="register">注册</a>
+                </li>
             </c:if>
             <c:if test="${user!=null}">
                 <li class="nav-item">
-                    <a class="nav-link" href="#">${user.getName()}</a>
+                    <a class="nav-link" href="#">${user.getAccount()}</a>
                 </li>
             </c:if>
 

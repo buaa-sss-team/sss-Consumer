@@ -10,16 +10,16 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.ServletException;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 @Controller
-@SessionAttributes("currentUserName")
 public class HomeController extends CommonPageController{
 
     @RequestMapping(value = "/")
-    public ModelAndView get(ModelMap m,@ModelAttribute("currentUserName")String currentUserName) throws ServletException, IOException {
+    public ModelAndView get(ModelMap m, HttpSession session) throws ServletException, IOException {
 
-        ModelAndView mv=super.get(m,"home",currentUserName);
+        ModelAndView mv=super.get(m,"home",session);
 
         return mv;
     }

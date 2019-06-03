@@ -9,11 +9,29 @@
 <html>
 <head>
     <%@include file="head.jsp"%>
-    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="../static/css/main.css">
     <title>SSS - 学术社群服务</title>
-    <script src="js/index.js"></script>
+    <script src="../static/js/index.js"></script>
 </head>
 <body>
+
+<div class="modal fade" id="noteModal" tabindex="-1" role="dialog" aria-labelledby="noteModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="noteModalLabel">错误</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p id="noteModalText">登录失败，请检查您输入的用户名和密码</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
     <div class="container" style="width: 576px;margin-top: 56px">
         <div class="card">
             <div class="card-body">
@@ -45,5 +63,7 @@
         </div>
 
     </div>
+
+    <script src="../static/js/alertmodal.js"></script>
 </body>
 </html>

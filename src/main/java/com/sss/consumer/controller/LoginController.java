@@ -14,7 +14,6 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 @Controller
-@SessionAttributes("currentUserName")
 public class LoginController {
     @RequestMapping(value = "/login" , method = RequestMethod.GET)
     public ModelAndView get(ModelMap m) throws ServletException, IOException {
@@ -24,11 +23,11 @@ public class LoginController {
     @RequestMapping(value = "/login" , method = RequestMethod.POST)
     public String post(ModelMap m, @RequestParam("username")String userName, @RequestParam("password")String password, HttpSession session) throws ServletException, IOException {
         if(DubboServices.INSTANCE.authorization.userLogin(userName,password)==0){
-            m.addAttribute("currentUserName",userName);
+            session.setAttribute("currentUserName",userName);
             return "redirect:/";
         }
 
-        return "login";
+        return "redirect:/login?alert=Failed";
     }
 
 }
