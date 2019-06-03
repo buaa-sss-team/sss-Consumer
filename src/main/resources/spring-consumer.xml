@@ -48,8 +48,6 @@
     <dubbo:reference interface="com.sss.interfaces.service.CheckService"
                      id="CheckService"/>
 
-    <dubbo:reference interface="com.sss.interfaces.service.InquireService"
-                     id="InquireService"/>
     <dubbo:reference interface="com.sss.interfaces.service.CommonService"
                      id="CommonService"/>
 </beans>

@@ -43,7 +43,7 @@ public class TestController {
         ModelAndView mv = new ModelAndView("test");
         if (service != null){
             User user = service.getUserInfo(1);
-            int temp = ihdBdao.delete(u ser);
+            int temp = ihdBdao.delete(user);
             mv.addObject("account",temp);
             mv.addObject("pwd",temp);
         }
