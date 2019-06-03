@@ -17,13 +17,19 @@ public class TestHibernate {
         IHDBdao hdbdao=ctx.getBean(IHDBdao.class);
 
         User x=new User();
+        x=(User)hdbdao.getByID(x.getClass(),1);
+
+        hdbdao.delete(x);
+        /*
         x.setId(1);
-        x.setAccount("6.3test");
+        x.setAccount("6.3test2");
         x.setPassword("nope");
-        x.setInfo("hello");
+        //x.setInfo("hello");
         x.setType(1);
         x.setCredit(1);
         hdbdao.insert(x);
+        */
 
     }
 }
+

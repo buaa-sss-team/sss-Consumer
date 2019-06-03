@@ -30,6 +30,9 @@
 
     <dubbo:reference interface="com.sss.interfaces.IESService"
                      id="ESService"/>
+
+    <dubbo:reference interface="com.sss.interfaces.service.InquireService"
+                     id="InquireService"/>
     <!--	扫描注解包路径，多个包用逗号分隔，不填pacakge表示扫描当前ApplicationContext中所有的类	-->
     <dubbo:annotation package="com.sss.consumer"/>
 
