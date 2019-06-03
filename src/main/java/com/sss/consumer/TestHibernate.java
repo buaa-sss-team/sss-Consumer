@@ -16,6 +16,14 @@ public class TestHibernate {
         ApplicationContext ctx = new ClassPathXmlApplicationContext("spring-consumer.xml");
         IHDBdao hdbdao=ctx.getBean(IHDBdao.class);
 
+        User x=new User();
+        x.setId(1);
+        x.setAccount("6.3test");
+        x.setPassword("nope");
+        x.setInfo("hello");
+        x.setType(1);
+        x.setCredit(1);
+        hdbdao.insert(x);
 
     }
 }
