@@ -24,9 +24,9 @@
 <%--                    </span>--%>
 <%--                </div><!-- /input-group -->--%>
     <div class="input-group input-group-sm" style="margin-top:5px; width:auto;padding-left: 0.8rem;padding-right: 0.8rem">
-        <input type="text" class="form-control" placeholder="" aria-describedby="button-navsearch">
+        <input type="text" class="form-control" placeholder="" aria-describedby="btnNavSearch" id="inputNavSearch">
         <div class="input-group-append">
-            <button class="btn btn-primary" type="button" id="button-navsearch" style="color:white;">搜索</button>
+            <button class="btn btn-primary" type="button" id="btnNavSearch" style="color:white;">搜索</button>
         </div>
     </div>
             </li>
