@@ -47,10 +47,12 @@ public class buyController extends CommonPageController{
         if(password.equals(user.getPassword())) {
             Gson gson=new Gson();
             JsonArray bought;
+            JsonObject itemBought=new JsonObject();
             int price=0;
             if(restype.equals("paper")){
                 Paper paper=DubboServices.INSTANCE.commonService.getPaperInfo(Integer.valueOf(resid));
                 price=paper.getCost();
+
             }
             try {
                 bought=gson.fromJson(user.getBoughtThings(), JsonArray.class);
@@ -58,7 +60,9 @@ public class buyController extends CommonPageController{
                 bought=new JsonArray();
             }
             if(bought==null)bought=new JsonArray();
-            bought.add(resid);
+            itemBought.addProperty("type",restype);
+            itemBought.addProperty("id",Integer.valueOf(resid));
+            bought.add(itemBought);
             user.setBoughtThings(gson.toJson(bought));
             user.setCredit(user.getCredit()-price);
 
