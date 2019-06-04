@@ -169,4 +169,48 @@ body {
     text-align: center;
     color: #aaa;
 }
+.title{
+    font-size:23px;
+    font-weight:550;
+    text-align:center;
+}
+.year{
+    font-weight:500;
+    font-size:14px;
+    width:100px;
+    text-align: justify;
+}
+.contentN{
+    font-size:15px;
+    margin-left:40px;
+}
+.contentM{
+    font-size:13px;
+    margin-left:30px;
+}
+.f6{
+    text-align: center;
+    width: 6em; /*这个值是看最长能显示几个文字，如x，则为x em*/
+}
+.f5{
+    letter-spacing:0.25em;  /*如果需要y个字两端对齐，则为(x-y)/(y-1),这里是（6-5）/(5-1)=0.25em */
+    margin-right:-0.25em;  /*同上*/
+}
+.f4{
+    letter-spacing:0.67em;
+    margin-right:-0.67em;
+}
+.f3{
+    letter-spacing:1.5em;
+    margin-right:-1.5em;
+}
+.f2{
+    letter-spacing:4em;
+    margin-right:-4em;
+}
+.card1{
+    border-bottom:1px solid gainsboro;
+}
+
+
 
