@@ -28,12 +28,10 @@ public class ResourcesPageController extends CommonPageController{
         for (int i = 0; i < boughtItems.size(); i++) {
             if(isPaper&&boughtItems.get(i).getAsJsonObject().get("type").getAsString().equals("paper")
                     &&id==boughtItems.get(i).getAsJsonObject().get("id").getAsInt()){
-
                 return true;
             }
             if((!isPaper)&&boughtItems.get(i).getAsJsonObject().get("type").getAsString().equals("patent")
                     &&id==boughtItems.get(i).getAsJsonObject().get("id").getAsInt()){
-
                 return true;
             }
         }

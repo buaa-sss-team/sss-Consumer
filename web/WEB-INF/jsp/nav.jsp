@@ -46,6 +46,9 @@
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                         <a class="dropdown-item" href="/account">个人信息</a>
                         <a class="dropdown-item" href="/bought">已买到的资源</a>
+                        <c:if test="${user.type==-1}">
+                            <a class="dropdown-item" href="/review">审核专家申请</a>
+                        </c:if>
                         <a class="dropdown-item" href="/logout">登出</a>
                     </div>
                 </li>

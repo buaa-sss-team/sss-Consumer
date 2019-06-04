@@ -72,14 +72,31 @@
             </form>
         </div>
         <div class="col-md-4">
-            <div class="card">
-                <div class="card-header">
-                    申请成为专家
+            <c:if test="${user.type==0}">
+                <div class="card">
+                    <div class="card-header">
+                        申请成为专家
+                    </div>
+                    <ul class="list-group list-group-flush">
+                            <%--                    <li class="list-group-item"><button class="btn btn-secondary">申请</button></li>--%>
+                        <li class="list-group-item">在专家个人页面点击申请入驻即可成为该专家</li>
+                    </ul>
                 </div>
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item"><button class="btn btn-secondary">申请</button></li>
-                </ul>
-            </div>
+            </c:if>
+            <c:if test="${user.type>0}">
+                <div class="card">
+                    <div class="card-header">
+                        专家信息
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">${expert.name}</li>
+                        <li class="list-group-item"><a href="/expert/${expert.id}">专家主页</a></li>
+
+                    </ul>
+                </div>
+            </c:if>
+
+
             <div class="card">
                 <div class="card-header">
                     余额管理

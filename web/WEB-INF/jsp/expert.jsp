@@ -32,18 +32,19 @@
             </h5>
             <p class="text-secondary">${expert.position}</p>
             <p class="text-secondary">${expert.orgs}</p>
-            <p>${paper.authorId}</p>
+<%--            <p>${paper.authorId}</p>--%>
         </div>
-        <div class="col-md-4">
-<%--            <div class="card">--%>
-<%--                <div class="card-body">--%>
-<%--                    <h5 class="card-title">阅览次数</h5>--%>
-<%--                    <p class="card-text">${paper.searchvalue}</p>--%>
-<%--                    <h5 class="card-title">下载次数</h5>--%>
-<%--                    <p class="card-text">${paper.downvalue}</p>--%>
-<%--                </div>--%>
-<%--            </div>--%>
-        </div>
+        <c:if test="${user.type==0}">
+            <div class="col-md-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">您是该专家本人？</h5>
+                        <a class="btn btn-secondary" href="/tobeexpert/${expert.id}">申请入驻</a>
+                    </div>
+                </div>
+            </div>
+        </c:if>
+
     </div>
     <h6>摘要</h6>
     <p>${expert.tags}</p>

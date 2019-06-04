@@ -13,19 +13,15 @@
 
     <div class="row">
         <div class="col-md-8">
-            <c:forEach items="${index}" var="i">
-                <c:if test="${i%2==0}">
-                    <a href="/paper/${papers.get(i/2).id}">
-                        <p><c:out value='${papers.get(i/2).title}'></c:out></p>
-                    </a>
-                </c:if>
-                <c:if test="${i%2!=0}">
-                    <a href="/paper/${patents.get((i-1)/2).id}">
-                        <p><c:out value='${patents.get((i-1)).title}'></c:out></p>
-                    </a>
-                </c:if>
-
-
+            <c:forEach items="${applist}" var="app" varStatus="i">
+                <p>用户ID：${app.userid}</p>
+                <p>用户名：${appextra.get(i.index).get("userName")}</p>
+                <p>专家ID：${appextra.get(i.index).get("expert")}</p>
+                <p>专家名：${appextra.get(i.index).get("expertName")}</p>
+                <p>申请身份证号：${appextra.get(i.index).get("PersonalIdNumber")}</p>
+                <p>申请备注：${appextra.get(i.index).get("message")}</p>
+                <a class="btn btn-primary" href="/review/${app.id}/a">接受</a>
+                <a class="btn btn-secondary"  href="/review/${app.id}/r">拒绝</a>
             </c:forEach>
         </div>
         <div class="col-md-4">

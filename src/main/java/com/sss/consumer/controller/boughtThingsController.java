@@ -26,10 +26,11 @@ public class boughtThingsController extends CommonPageController{
         User user= DubboServices.INSTANCE.commonService.getUserInfo((String)session.getAttribute("currentUserName"));
 
         Gson gson=new Gson();
-        JsonArray boughtItems=gson.fromJson(user.getBoughtThings(),JsonArray.class);
         ArrayList<Paper> papers=new ArrayList<Paper>();
         ArrayList<Patent> patents=new ArrayList<Patent>();
         ArrayList<Integer> index=new ArrayList<Integer>();
+        JsonArray boughtItems=gson.fromJson(user.getBoughtThings(),JsonArray.class);
+
         for(int i=0;i<boughtItems.size();i++){
             if(boughtItems.get(i).getAsJsonObject().get("type").getAsString().equals("paper")){
                 papers.add(DubboServices.INSTANCE.commonService.getPaperInfo(boughtItems.get(i).getAsJsonObject().get("id").getAsInt()));

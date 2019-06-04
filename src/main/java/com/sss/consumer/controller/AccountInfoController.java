@@ -28,6 +28,10 @@ public class AccountInfoController extends CommonPageController{
         mv.addObject("tel",info.get("tel").getAsString());
         mv.addObject("birthday",info.get("birthday").getAsString());
         mv.addObject("org",info.get("org").getAsString());
+        if(user.getType()>0){
+            mv.addObject("expert",DubboServices.INSTANCE.commonService.getExpertInfo(user.getType()));
+
+        }
 
         return mv;
     }

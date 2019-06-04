@@ -39,6 +39,7 @@ public class RegisterController extends CommonPageController {
         user.setInfo(gson.toJson(obj));
         user.setType(0);
         user.setCredit(0);
+        user.setBoughtThings("[]");
 
 
         if(DubboServices.INSTANCE.commonService.userSignIn(user)==0){
