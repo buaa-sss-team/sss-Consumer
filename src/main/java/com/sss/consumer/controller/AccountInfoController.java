@@ -31,6 +31,30 @@ public class AccountInfoController extends CommonPageController{
 
         return mv;
     }
+    @RequestMapping(value = "/purchase")
+    public ModelAndView getPurchase(ModelMap m, HttpSession session) throws ServletException, IOException {
+
+        ModelAndView mv=super.get(m,"purchase",session);
+        User user=DubboServices.INSTANCE.commonService.getUserInfo((String)session.getAttribute("currentUserName"));
+        mv.addObject("user", user);
+
+        return mv;
+    }
+    @RequestMapping(value = "/purchase", method = RequestMethod.POST)
+    public String postPurchase(ModelMap m, HttpSession session,@RequestParam("amount")String amount) throws ServletException, IOException {
+
+
+        User user=DubboServices.INSTANCE.commonService.getUserInfo((String)session.getAttribute("currentUserName"));
+
+
+        int amountint=Integer.parseInt(amount);
+
+        user.setCredit(user.getCredit()+amountint);
+
+        DubboServices.INSTANCE.commonService.updateUserInfo(user);
+
+        return "redirect:/account?alert=OK";
+    }
 
     @RequestMapping(value = "/account" , method = RequestMethod.POST)
     public String post(ModelMap m, @RequestParam("password")String password,@RequestParam("newpassword")String newpassword, @RequestParam("tel")String tel, @RequestParam("birthday")String birthday, @RequestParam("org")String org, HttpSession session) throws ServletException, IOException {

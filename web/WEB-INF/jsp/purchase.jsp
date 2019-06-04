@@ -27,29 +27,18 @@
 
     <div class="row">
         <div class="col-md-8">
-            <h1 style="margin-bottom: 24px">注册</h1>
+            <h1 style="margin-bottom: 24px">个人信息</h1>
             <form style="padding: 0 4px" method="post">
                 <div class="form-group">
                     <label for="regUsername">用户名</label>
-                    <input type="text" class="form-control" id="regUsername" name="username" placeholder="">
+                    <input type="text" class="form-control" id="regUsername" name="username" placeholder="" value="${user.account}" disabled>
                 </div>
                 <div class="form-group">
-                    <label for="regPwd">密码</label>
-                    <input type="password" class="form-control" id="regPwd" name="password" placeholder="">
+                    <label for="regUsername">用户名</label>
+                    <input type="text" class="form-control" id="amount" name="amount" placeholder="" value="0">
                 </div>
-                <div class="form-group">
-                    <label for="regTel">手机号码</label>
-                    <input type="tel" class="form-control" id="regTel" name="tel" placeholder="">
-                </div>
-                <div class="form-group">
-                    <label for="regDoB">生日</label>
-                    <input type="date" class="form-control" id="regDoB" name="birthday" placeholder="">
-                </div>
-                <div class="form-group">
-                    <label for="regOrg">所在单位</label>
-                    <input type="text" class="form-control" id="regOrg" name="org" placeholder="">
-                </div>
-                <button type="submit" class="btn btn-primary" style="margin-top: 24px;width: 96px">注册</button>
+
+                <button type="submit" class="btn btn-primary" style="margin-top: 24px;width: 96px">充值</button>
             </form>
         </div>
         <div class="col-md-4">

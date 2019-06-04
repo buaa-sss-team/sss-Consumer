@@ -86,7 +86,7 @@
                 </div>
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item">余额：${user.credit}</li>
-                    <li class="list-group-item"><button class="btn btn-secondary">充值</button></li>
+                    <li class="list-group-item"><a href="/purchase"><button class="btn btn-secondary">充值</button></a></li>
                 </ul>
             </div>
         </div>
