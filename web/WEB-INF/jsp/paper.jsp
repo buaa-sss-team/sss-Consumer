@@ -48,7 +48,7 @@
                     操作
                 </div>
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item"><a href="/purchase"><button class="btn btn-secondary">购买全文</button></a></li>
+                    <li class="list-group-item"><a href="/buy/paper/${paper.id}"><button class="btn btn-secondary">购买全文</button></a></li>
                 </ul>
             </div>
         </div>
