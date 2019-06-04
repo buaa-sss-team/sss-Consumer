@@ -4,9 +4,6 @@
 <html>
 <head>
     <%@include file="head.jsp" %>
-    <link rel="stylesheet" href="../static/css/main.css">
-    <title>SSS - 学术社群服务</title>
-    <script src="../static/js/index.js"></script>
 </head>
 <body>
 

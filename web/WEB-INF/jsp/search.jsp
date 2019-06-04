@@ -4,9 +4,6 @@
 <html>
 <head>
     <%@include file="head.jsp" %>
-    <link rel="stylesheet" href="css/main.css">
-    <title>SSS - 学术社群服务</title>
-    <script src="js/index.js"></script>
 </head>
 <body>
 
@@ -19,11 +16,17 @@
             <use xlink:href="#icon-weibiaoti--"></use>
         </svg></span>
         </div>
-        <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg">
+        <input type="text" class="form-control" id="searchInput" aria-describedby="inputGroup-sizing-lg">
     </div>
     <div class="row">
         <div class="col-md-8">
+            <c:forEach items="${res}" var="item">
+                <a href="/paper/${item.get("id")}">
+                    <p><c:out value='${item.get("title")}'></c:out></p>
+                </a>
 
+
+            </c:forEach>
         </div>
         <div class="col-md-4">
 
