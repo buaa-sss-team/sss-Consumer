@@ -43,6 +43,14 @@
                     <p class="card-text">${paper.downvalue}</p>
                 </div>
             </div>
+            <div class="card">
+                <div class="card-header">
+                    操作
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item"><a href="/purchase"><button class="btn btn-secondary">购买全文</button></a></li>
+                </ul>
+            </div>
         </div>
     </div>
     <h6>摘要</h6>

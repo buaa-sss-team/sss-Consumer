@@ -27,31 +27,31 @@
 
     <div class="row">
         <div class="col-md-8">
-            <h1 style="margin-bottom: 24px">个人信息</h1>
+            <h1 style="margin-bottom: 24px">充值</h1>
             <form style="padding: 0 4px" method="post">
                 <div class="form-group">
                     <label for="regUsername">用户名</label>
                     <input type="text" class="form-control" id="regUsername" name="username" placeholder="" value="${user.account}" disabled>
                 </div>
                 <div class="form-group">
-                    <label for="regUsername">用户名</label>
-                    <input type="text" class="form-control" id="amount" name="amount" placeholder="" value="0">
+                    <label for="amount">金额</label>
+                    <input type="number" class="form-control" id="amount" name="amount" placeholder="" value="0">
                 </div>
 
                 <button type="submit" class="btn btn-primary" style="margin-top: 24px;width: 96px">充值</button>
             </form>
         </div>
         <div class="col-md-4">
-            <div class="card">
-                <div class="card-header">
-                    现在注册
-                </div>
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item">搜索学术文献</li>
-                    <li class="list-group-item">购买学术资源</li>
-                    <li class="list-group-item">寻找专家协助</li>
-                </ul>
-            </div>
+<%--            <div class="card">--%>
+<%--                <div class="card-header">--%>
+<%--                    现在注册--%>
+<%--                </div>--%>
+<%--                <ul class="list-group list-group-flush">--%>
+<%--                    <li class="list-group-item">搜索学术文献</li>--%>
+<%--                    <li class="list-group-item">购买学术资源</li>--%>
+<%--                    <li class="list-group-item">寻找专家协助</li>--%>
+<%--                </ul>--%>
+<%--            </div>--%>
         </div>
 
     </div>
