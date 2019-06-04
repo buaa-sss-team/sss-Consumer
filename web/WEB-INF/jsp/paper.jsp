@@ -56,6 +56,27 @@
                         <p class="contentM">1${paper.downvalue}</p>
                     </div>
                 </div>
+                <div class="card-body">
+                    <c:if test="${bought}">
+                        <div class="dropdown">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                资源下载
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <c:forEach items="${urls}" var="url">
+                                    <a class="dropdown-item" href="${url}">${url}</a>
+                                </c:forEach>
+
+                            </div>
+                        </div>
+                    </c:if>
+                    <c:if test="${!bought}">
+                        <a href="/buy/paper/${paper.id}"><button class="btn btn-secondary">购买全文</button></a></li>
+                    </c:if>
+
+
+
+                </div>
             </div>
         </div>
     </div>

@@ -5,6 +5,7 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.sss.consumer.DubboServices;
 import com.sss.interfaces.hmodel.Paper;
+import com.sss.interfaces.hmodel.Tradeinfo;
 import com.sss.interfaces.hmodel.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -18,6 +19,8 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.sql.Time;
+import java.sql.Timestamp;
 
 @Controller
 public class buyController extends CommonPageController{
@@ -68,10 +71,16 @@ public class buyController extends CommonPageController{
 
 
             if (DubboServices.INSTANCE.commonService.updateUserInfo(user) == 0) {
-                return "redirect:/account?alert=OK";
+                Tradeinfo tradeinfo=new Tradeinfo();
+                Timestamp d = new Timestamp(System.currentTimeMillis());
+                tradeinfo.setTradetime(d);
+                tradeinfo.setType(restype.equals("paper")?0:1);
+                tradeinfo.setResid(Integer.valueOf(resid));
+                DubboServices.INSTANCE.commonService.addTradeInfo(tradeinfo);
+                return "redirect:/bought?alert=OK";
             }
         }
-        return "redirect:/account?alert=Failed";
+        return "redirect:/buy/"+restype+"/"+resid+"?alert=Failed";
     }
 
 }
