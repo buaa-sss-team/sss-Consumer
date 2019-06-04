@@ -24,10 +24,11 @@ public class ReviewApplicationController extends CommonPageController {
 
     @RequestMapping(value = "/review")
     public ModelAndView get(ModelMap m, HttpSession session) throws ServletException, IOException {
-
+        if(session.getAttribute("currentUserName")==null || session.getAttribute("currentUserName").equals(""))
+            return new ModelAndView("redirect:/login?alert=LoginFirst");
         ModelAndView mv=super.get(m,"review",session);
         User user= DubboServices.INSTANCE.commonService.getUserInfo((String)session.getAttribute("currentUserName"));
-
+        if(user.getType()!=-1)return new ModelAndView("redirect:/login?alert=LoginFirst");
         List<Tobeexpert> tobeexperts = DubboServices.INSTANCE.commonService.checkTobeexpert(0);
         mv.addObject("applist",tobeexperts);
         ArrayList<Map<String,String>> appextra=new ArrayList<Map<String, String>>();

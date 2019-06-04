@@ -13,3 +13,4 @@ function GetRequest() {
 }
 if(GetRequest()["alert"]=="Failed")$("#noteModal").modal("show");
 if(GetRequest()["alert"]=="OK")$("#noteModalOK").modal("show");
+if(GetRequest()["alert"]=="LoginFirst")$("#noteModalLoginFirst").modal("show");

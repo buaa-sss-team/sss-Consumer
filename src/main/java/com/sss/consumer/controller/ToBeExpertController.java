@@ -22,6 +22,8 @@ import java.io.IOException;
 public class ToBeExpertController extends CommonPageController {
     @RequestMapping(value = "/tobeexpert/{expertid}")
     public ModelAndView get(ModelMap m, HttpSession session, @PathVariable String expertid) throws ServletException, IOException {
+        if(session.getAttribute("currentUserName")==null || session.getAttribute("currentUserName").equals(""))
+            return new ModelAndView("redirect:/login?alert=LoginFirst");
 
         ModelAndView mv=super.get(m,"tobeexpert",session);
         User user= DubboServices.INSTANCE.commonService.getUserInfo((String)session.getAttribute("currentUserName"));

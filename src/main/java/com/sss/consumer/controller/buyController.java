@@ -26,7 +26,8 @@ import java.sql.Timestamp;
 public class buyController extends CommonPageController{
     @RequestMapping(value = "/buy/{restype}/{resid}")
     public ModelAndView get(ModelMap m, HttpSession session, @PathVariable String restype, @PathVariable String resid) throws ServletException, IOException {
-
+        if(session.getAttribute("currentUserName")==null || session.getAttribute("currentUserName").equals(""))
+            return new ModelAndView("redirect:/login?alert=LoginFirst");
         ModelAndView mv=super.get(m,"confirmbuyres",session);
         User user= DubboServices.INSTANCE.commonService.getUserInfo((String)session.getAttribute("currentUserName"));
         mv.addObject("user", user);

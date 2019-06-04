@@ -19,6 +19,8 @@ import java.io.IOException;
 public class AccountInfoController extends CommonPageController{
     @RequestMapping(value = "/account")
     public ModelAndView get(ModelMap m, HttpSession session) throws ServletException, IOException {
+        if(session.getAttribute("currentUserName")==null || session.getAttribute("currentUserName").equals(""))
+            return new ModelAndView("redirect:/login?alert=LoginFirst");
 
         ModelAndView mv=super.get(m,"account",session);
         User user=DubboServices.INSTANCE.commonService.getUserInfo((String)session.getAttribute("currentUserName"));
@@ -37,6 +39,8 @@ public class AccountInfoController extends CommonPageController{
     }
     @RequestMapping(value = "/purchase")
     public ModelAndView getPurchase(ModelMap m, HttpSession session) throws ServletException, IOException {
+        if(session.getAttribute("currentUserName")==null || session.getAttribute("currentUserName").equals(""))
+            return new ModelAndView("redirect:/login?alert=LoginFirst");
 
         ModelAndView mv=super.get(m,"purchase",session);
         User user=DubboServices.INSTANCE.commonService.getUserInfo((String)session.getAttribute("currentUserName"));

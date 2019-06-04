@@ -21,7 +21,8 @@ import java.util.LinkedList;
 public class boughtThingsController extends CommonPageController{
     @RequestMapping(value = "/bought")
     public ModelAndView get(ModelMap m, HttpSession session) throws ServletException, IOException {
-
+        if(session.getAttribute("currentUserName")==null || session.getAttribute("currentUserName").equals(""))
+            return new ModelAndView("redirect:/login?alert=LoginFirst");
         ModelAndView mv=super.get(m,"boughtThings",session);
         User user= DubboServices.INSTANCE.commonService.getUserInfo((String)session.getAttribute("currentUserName"));
 
