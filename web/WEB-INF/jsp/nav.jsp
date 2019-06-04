@@ -44,7 +44,7 @@
                             ${user.getAccount()}
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="#">个人信息</a>
+                        <a class="dropdown-item" href="/account">个人信息</a>
                         <a class="dropdown-item" href="/logout">登出</a>
                     </div>
                 </li>

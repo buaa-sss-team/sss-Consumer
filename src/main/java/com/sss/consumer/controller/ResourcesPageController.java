@@ -21,4 +21,11 @@ public class ResourcesPageController extends CommonPageController{
         return mv;
 
     }
+    @RequestMapping(value = "/expert/{id}", method = RequestMethod.GET)
+    public ModelAndView getExpert(ModelMap m, @PathVariable String id, HttpSession session)throws ServletException, IOException {
+        ModelAndView mv=get(m,"expert",session);
+        mv.addObject("expert", DubboServices.INSTANCE.commonService.getExpertInfo(Integer.valueOf(id)));
+        return mv;
+
+    }
 }

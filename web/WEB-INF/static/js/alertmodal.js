@@ -11,4 +11,5 @@ function GetRequest() {
     }
     return theRequest;
 }
-if(GetRequest()["alert"]!=null)$("#noteModal").modal("show");
+if(GetRequest()["alert"]=="Failed")$("#noteModal").modal("show");
+if(GetRequest()["alert"]=="OK")$("#noteModalOK").modal("show");
