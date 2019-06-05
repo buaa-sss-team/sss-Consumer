@@ -2,7 +2,7 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <nav class="navbar navbar-expand-md navbar-dark bg-steelblue fixed-top" id="navmain">
     <a class="navbar-brand" href="/">
-        <svg class="icon" aria-hidden="true" font-size="20px" color="white">
+        <svg class="icon" aria-hidden="true"  color="white">
             <use xlink:href="#icon-xueshu"></use>
         </svg>
         <span style="color:white;">

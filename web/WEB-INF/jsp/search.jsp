@@ -10,8 +10,10 @@
 <%@ include file="nav.jsp" %>
 <div class="container" style="margin-top: 32px">
 
-    <div style="font-size:24px;">搜索</div>
-    <div class="input-group input-group-lg">
+    <svg class="icon" aria-hidden="true" style="color:steelblue;font-size:200px;margin-left:40%;">
+        <use xlink:href="#icon-xueshu"></use>
+    </svg>
+    <div class="input-group input-group-lg" style="margin-top:5%;">
         <div class="input-group-prepend">
             <span class="input-group-text" id="inputGroup-sizing-lg"><svg class="icon" aria-hidden="true" font-size="20px" color="#111111">
             <use xlink:href="#icon-weibiaoti--"></use>

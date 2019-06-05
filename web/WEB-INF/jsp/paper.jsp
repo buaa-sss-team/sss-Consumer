@@ -51,11 +51,11 @@
                 <div class="card-body">
                     <div class="row" style="margin-top:10px;">
                         <h5 class="contentN" >阅览次数</h5>
-                        <p class="contentM">1${paper.searchvalue}</p>
+                        <p class="contentM">${paper.searchvalue}</p>
                     </div>
                     <div class="row" style="margin-top:10px;">
                         <h5 class="contentN">下载次数</h5>
-                        <p class="contentM">1${paper.downvalue}</p>
+                        <p class="contentM">${paper.downvalue}</p>
                     </div>
                 </div>
                 <div class="card-body">
