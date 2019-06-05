@@ -728,7 +728,7 @@ public class AddData {
         //UpdatePaperJson();
         //UpdateExpertJson();
         //UploadExpert();
-        UploadPaper();
+        //UploadPaper();
         //checkval(111);
         //String path="D:\\temp\\data\\paper_1k.txt";
         /*              文件路径                    */
