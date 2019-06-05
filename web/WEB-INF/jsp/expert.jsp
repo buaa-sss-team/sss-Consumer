@@ -1,6 +1,6 @@
 <%-- Created by IntelliJ IDEA. --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 <html>
 <head>
     <%@include file="head.jsp" %>
@@ -8,22 +8,7 @@
 <body>
 
 <%@ include file="nav.jsp" %>
-
 <div class="container" style="margin-top: 32px">
-    <div class="row" >
-        <svg class="icon" aria-hidden="true" style="color:steelblue;font-size:80px;">
-            <use xlink:href="#icon-xueshu"></use>
-        </svg>
-        <div style="width:60%;">
-            <h5 style="color:#black;margin-left:4%;">
-                ${expert.name}
-            </h5>
-            <div style="color:#black;margin-left:4%;">${expert.position}</div>
-            <div style="color:#black;margin-left:4%;" >${expert.orgs}</div>
-        </div>
-    </div>
-    <div style="height:20px;border-bottom: 1px solid black;">
-    </div>
     <div class="modal fade" id="noteModal" tabindex="-1" role="dialog" aria-labelledby="noteModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -42,7 +27,11 @@
 
     <div class="row">
         <div class="col-md-8">
-
+            <h5>
+                ${expert.name}
+            </h5>
+            <p class="text-secondary">${expert.position}</p>
+            <p class="text-secondary">${expert.orgs}</p>
 <%--            <p>${paper.authorId}</p>--%>
         </div>
         <c:if test="${user.type==0}">
@@ -55,13 +44,14 @@
                 </div>
             </div>
         </c:if>
+
     </div>
-    <div style="font-size:15px;font-weight:700;">摘要</div>
+    <h6>摘要</h6>
     <p>${expert.tags}</p>
 
 </div>
 
-<script src="/static/js/alertmodal.js"></script>
+<script src="../static/js/alertmodal.js"></script>
 
 </body>
 </html>

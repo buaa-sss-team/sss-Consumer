@@ -79,7 +79,7 @@
 
 </div>
 
-<script src="/static/js/alertmodal.js"></script>
+<script src="../static/js/alertmodal.js"></script>
 
 </body>
 </html>
