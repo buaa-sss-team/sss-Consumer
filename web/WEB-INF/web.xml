@@ -32,5 +32,7 @@
         <listener-class>com.sss.consumer.ServiceInitHelper</listener-class>
     </listener>
 
-
+    <welcome-file-list>
+        <welcome-file>/WEB-INF/jsp/home.jsp</welcome-file>
+    </welcome-file-list>
 </web-app>
