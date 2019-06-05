@@ -33,9 +33,15 @@ public class SearchController extends CommonPageController{
 //        fir.add(new Pair("instruction",new Pair("matchQuery","Machine")));
 //        limits.add(new Pair("abstract",fir));
         if(keyword.length()==0)return mv;
+        mv.addObject("category",category);
+        mv.addObject("keyword",keyword);
+        List<Map<String, Object>> res;
         String index="abstract";
-        if(category.equals("expert"))index="name";
-        List<Map<String, Object>> res = DubboServices.INSTANCE.esService.FuzzyQuery(category,index,keyword, 100);
+        if(category.equals("expert")) {
+            index = "name";
+            res= DubboServices.INSTANCE.esService.FuzzyQuery(category, index, keyword, 100);
+        }else
+            res=DubboServices.INSTANCE.esService.FuzzyQueryString(category,keyword,100);
         if (res == null) {
             mv.addObject("info","无查询结果");
         }else{

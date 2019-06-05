@@ -19,11 +19,32 @@
             <use xlink:href="#icon-weibiaoti--"></use>
         </svg></span>
         </div>
-        <input type="text" class="form-control" id="searchInput" aria-describedby="inputGroup-sizing-lg">
+        <input type="text" class="form-control" id="searchInput" aria-describedby="inputGroup-sizing-lg" value="${keyword}">
     </div>
 
     <div class="row">
         <div class="col-md-8" style="margin-top:50px;">
+            <c:if test='${category.equals("paper")}'>
+                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#" aria-selected="true">论文</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/search/expert/${keyword}" aria-selected="false">专家</a>
+                    </li>
+                </ul>
+            </c:if>
+            <c:if test='${category.equals("expert")}'>
+                <ul class="nav nav-tabs" id="myTab" role="tablist">
+                    <li class="nav-item">
+                        <a class="nav-link " href="/search/paper/${keyword}"  aria-selected="false">论文</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#" aria-selected="true">专家</a>
+                    </li>
+                </ul>
+            </c:if>
+
             <c:forEach items="${res}" var="item">
                 <div class="card1" style="margin-top:10px;height:100px;width:1000px;margin-left:20px">
                     <a href="/paper/${item.get("id")}" >
