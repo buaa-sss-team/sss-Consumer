@@ -49,6 +49,9 @@
                         <c:if test="${user.type==-1}">
                             <a class="dropdown-item" href="/review">审核专家申请</a>
                         </c:if>
+                        <c:if test="${user.type>0}">
+                            <a class="dropdown-item" href="/review">登记新论文</a>
+                        </c:if>
                         <a class="dropdown-item" href="/logout">登出</a>
                     </div>
                 </li>
