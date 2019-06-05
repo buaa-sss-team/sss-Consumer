@@ -2,6 +2,8 @@ package com.sss.consumer.controller;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.sss.consumer.DubboServices;
 import com.sss.interfaces.hmodel.Paper;
 import com.sss.interfaces.hmodel.Patent;
@@ -47,6 +49,19 @@ public class ResourcesPageController extends CommonPageController{
         Gson gson = new Gson();
         String[] urls=gson.fromJson(paper.getUrl(),String[].class);
         mv.addObject("urls",urls);
+        //TODO @母宇婷 看下面
+        String[] keywords=gson.fromJson(paper.getKeywords(),String[].class);
+        String keywordStr="";
+        for (String word:keywords)keywordStr+=", "+word;
+        if(keywordStr.length()>2)mv.addObject("keywords",keywordStr.substring(2));
+
+        String authorsStr="";
+        JsonArray authors=gson.fromJson(paper.getAuthorId(),JsonArray.class);
+        for(JsonElement author:authors){
+            authorsStr+=", "+author.getAsJsonObject().get("name").getAsString();
+        }
+        if(authorsStr.length()>2)mv.addObject("authors",authorsStr.substring(2));
+        //TODO @母宇婷 看上面
         return mv;
 
     }
