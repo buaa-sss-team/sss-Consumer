@@ -6,7 +6,6 @@ import com.alibaba.fastjson.JSONObject;
 import com.sss.interfaces.dao.IHDBdao;
 import com.sss.interfaces.hmodel.Expert;
 import com.sss.interfaces.hmodel.Paper;
-import org.omg.Messaging.SYNC_WITH_TRANSPORT;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.context.ApplicationContext;
@@ -16,11 +15,10 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
-import java.util.*;
-
-import com.alibaba.fastjson.JSON;
-
-import javax.persistence.criteria.CriteriaBuilder;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
+import java.util.TreeSet;
 
 public class AddData {
     private static Logger logger = LoggerFactory.getLogger(AddData.class);
