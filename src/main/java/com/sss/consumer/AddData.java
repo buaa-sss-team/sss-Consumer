@@ -718,6 +718,24 @@ public class AddData {
             return false;
         }
     }
+
+    public static boolean checkPaperVal(int val){
+        initst();
+        initst2();
+        ApplicationContext ctx = new ClassPathXmlApplicationContext("spring-consumer.xml");
+        IHDBdao hdbdao=ctx.getBean(IHDBdao.class);
+        Paper x=(Paper)hdbdao.getByID(Paper.class,val);
+        if(x.getId().equals(pmp.get(x.getSid()))){
+            logger.info("all right");
+            return true;
+        }
+        else{
+            logger.info(x.getId().toString());
+            logger.info(pmp.get(x.getSid()).toString());
+            logger.info("no!!!");
+            return false;
+        }
+    }
     public static void main(String args[]){
 
         //addPaper();
@@ -729,7 +747,17 @@ public class AddData {
         //UpdateExpertJson();
         //UploadExpert();
         //UploadPaper();
-        //checkval(111);
+        //checkval(3980);
+        //checkPaperVal(13560);
+
+        Paper u=new Paper();
+        u.setTitle("TestTest");
+
+        ApplicationContext ctx = new ClassPathXmlApplicationContext("spring-consumer.xml");
+        IHDBdao hdbdao=ctx.getBean(IHDBdao.class);
+        int id=hdbdao.insertPaper(u);
+        System.out.println(id);
+        System.out.println("!!!!!!!!");
         //String path="D:\\temp\\data\\paper_1k.txt";
         /*              文件路径                    */
        // String path="D:\\temp\\data\\paper_1k-backup.txt";
