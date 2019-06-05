@@ -42,32 +42,45 @@
 
     <div class="row">
         <div class="col-md-8">
-            <h1 style="margin-bottom: 24px">专家申请</h1>
-            <form style="padding: 0 4px" method="post">
+            <h1 style="margin-bottom: 24px">添加论文</h1>
+            <form style="padding: 0 4px" method="post" enctype="multipart/form-data" >
+
                 <div class="form-group">
-                    <label for="regUsername">用户名</label>
-                    <input type="text" class="form-control" id="regUsername" name="username" placeholder="" value="${user.account}" disabled>
+                    <label for="paperTitle">标题</label>
+                    <input type="text" class="form-control" id="paperTitle" name="paperTitle" placeholder="">
                 </div>
                 <div class="form-group">
-                    <label for="expertId">专家ID</label>
-                    <input type="text" class="form-control" id="expertId" name="expertId" placeholder="" value="${expert.id}" disabled>
+                    <label for="paperISBN">ISBN</label>
+                    <input type="text" class="form-control" id="paperISBN" name="paperISBN" placeholder="">
                 </div>
                 <div class="form-group">
-                    <label for="expertname">专家名</label>
-                    <input type="text" class="form-control" id="expertname" name="expertname" placeholder="" value="${expert.name}" disabled>
+                    <label for="paperCost">定价</label>
+                    <input type="text" class="form-control" id="paperCost" name="paperCost" placeholder="">
+                </div>
+                <div class="form-group">
+                    <label for="paperYear">发表年份</label>
+                    <input type="text" class="form-control" id="paperYear" name="paperYear" placeholder="">
+                </div>
+                <div class="form-group">
+                    <label for="paperOrg">发表刊物</label>
+                    <input type="text" class="form-control" id="paperOrg" name="paperOrg" placeholder="">
+                </div>
+                <div class="form-group">
+                    <label for="paperAuthors">除自己以外的作者（请使用竖线“|”分隔）</label>
+                    <input type="text" class="form-control" id="paperAuthors" name="paperAuthors" placeholder="">
+                </div>
+                <div class="form-group">
+                    <label for="paperAbs">摘要</label>
+                    <input type="text" class="form-control" id="paperAbs" name="paperAbs" placeholder="">
                 </div>
                 <div class="form-group">
                     <label for="oldPwd">当前密码（必填）</label>
                     <input type="password" class="form-control" id="oldPwd" name="password" placeholder="">
                 </div>
                 <div class="form-group">
-                    <label for="personalIdNumber">身份证</label>
-                    <input type="text" class="form-control" id="personalIdNumber" name="personalIdNumber" placeholder="">
+                    <input type="file" class="form-control" id="uploadUrl" name="file" placeholder="">
                 </div>
-                <div class="form-group">
-                    <label for="message">备注</label>
-                    <input type="text" class="form-control" id="message" name="message" placeholder="">
-                </div>
+
                 <button type="submit" class="btn btn-primary" style="margin-top: 24px;width: 96px">提交</button>
             </form>
         </div>
@@ -80,6 +93,7 @@
 </div>
 
 <script src="/static/js/alertmodal.js"></script>
+
 
 </body>
 </html>
