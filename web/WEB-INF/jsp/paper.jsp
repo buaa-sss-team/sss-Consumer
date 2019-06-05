@@ -31,7 +31,9 @@
             <h5 class="title">
                 ${paper.title}
             </h5>
-            <h6 class="year">作者：authorId</h6>
+            <%--          TODO @母宇婷 看下面  --%>
+            <h6 class="year">作者：${authors}</h6>
+            <%--          TODO @母宇婷 看上面  --%>
             <h6 class="year">SBN：${paper.isbn}</h6>
             <h6 class="year">发表年份:${paper.year}</h6>
             <div class="row1" >
@@ -39,9 +41,9 @@
                 <p>${paper.abs}</p>
             </div>
             <h6 style="fontsize:40px;font-weight:500;margin-top:30px;">关键字:
-                <c:forEach items="${paper.keywords}" var="item">
-                    <c:out value='${item}'></c:out>
-                </c:forEach>
+                <%--          TODO @母宇婷 看下面  --%>
+                ${keywords}
+                <%--          TODO @母宇婷 看上面  --%>
             </h6>
         </div>
         <div class="col-md-3" >
@@ -49,11 +51,11 @@
                 <div class="card-body">
                     <div class="row" style="margin-top:10px;">
                         <h5 class="contentN" >阅览次数</h5>
-                        <p class="contentM">1${paper.searchvalue}</p>
+                        <p class="contentM">${paper.searchvalue}</p>
                     </div>
                     <div class="row" style="margin-top:10px;">
                         <h5 class="contentN">下载次数</h5>
-                        <p class="contentM">1${paper.downvalue}</p>
+                        <p class="contentM">${paper.downvalue}</p>
                     </div>
                 </div>
                 <div class="card-body">
@@ -85,7 +87,7 @@
 </div>
 
 
-<script src="../static/js/alertmodal.js"></script>
+<script src="/static/js/alertmodal.js"></script>
 
 </body>
 </html>

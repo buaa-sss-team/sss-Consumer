@@ -2,7 +2,7 @@
 <%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <nav class="navbar navbar-expand-md navbar-dark bg-steelblue fixed-top" id="navmain">
     <a class="navbar-brand" href="/">
-        <svg class="icon" aria-hidden="true" font-size="20px" color="white">
+        <svg class="icon" aria-hidden="true"  color="white">
             <use xlink:href="#icon-xueshu"></use>
         </svg>
         <span style="color:white;">
@@ -48,6 +48,9 @@
                         <a class="dropdown-item" href="/bought">已买到的资源</a>
                         <c:if test="${user.type==-1}">
                             <a class="dropdown-item" href="/review">审核专家申请</a>
+                        </c:if>
+                        <c:if test="${user.type>0}">
+                            <a class="dropdown-item" href="/addpaper">登记新论文</a>
                         </c:if>
                         <a class="dropdown-item" href="/logout">登出</a>
                     </div>

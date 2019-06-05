@@ -2,10 +2,14 @@ package com.sss.consumer.controller;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.sss.consumer.DubboServices;
+import com.sss.consumer.FileUtil;
 import com.sss.interfaces.hmodel.Paper;
 import com.sss.interfaces.hmodel.Patent;
 import com.sss.interfaces.hmodel.User;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -47,9 +52,35 @@ public class ResourcesPageController extends CommonPageController{
         Gson gson = new Gson();
         String[] urls=gson.fromJson(paper.getUrl(),String[].class);
         mv.addObject("urls",urls);
-        return mv;
+        //TODO @母宇婷 看下面
+        String[] keywords=gson.fromJson(paper.getKeywords(),String[].class);
+        String keywordStr="";
+        if(keywords!=null)
+            for (String word:keywords)keywordStr+=", "+word;
+        if(keywordStr.length()>2)mv.addObject("keywords",keywordStr.substring(2));
 
+        String authorsStr="";
+        JsonArray authors=gson.fromJson(paper.getAuthorId(),JsonArray.class);
+        if(authors!=null)
+            for(JsonElement author:authors){
+                authorsStr+=", "+author.getAsJsonObject().get("name").getAsString();
+            }
+        if(authorsStr.length()>2)mv.addObject("authors",authorsStr.substring(2));
+        //TODO @母宇婷 看上面
+        return mv;
     }
+
+    @RequestMapping(value = "/paper/{id}/download/{filename:.+}", method = RequestMethod.GET)
+    public ResponseEntity<byte[]> download(@PathVariable("filename") String filename, HttpServletRequest req, @PathVariable String id,HttpSession session) throws ServletException,IOException{
+        //ApplicationContext ctx = new ClassPathXmlApplicationContext("spring-consumer.xml");
+        //fileService = ctx.getBean(FileService.class);
+        Paper paper=DubboServices.INSTANCE.commonService.getPaperInfo(Integer.valueOf(id));
+        if(isBought(true,Integer.valueOf(id),DubboServices.INSTANCE.commonService.getUserInfo((String)session.getAttribute("currentUserName"))))
+            return FileUtil.FileDownload(filename);
+        else return null;
+    }
+
+
     @RequestMapping(value = "/expert/{id}", method = RequestMethod.GET)
     public ModelAndView getExpert(ModelMap m, @PathVariable String id, HttpSession session)throws ServletException, IOException {
         ModelAndView mv=get(m,"expert",session);
