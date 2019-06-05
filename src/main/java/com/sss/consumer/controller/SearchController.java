@@ -38,6 +38,7 @@ public class SearchController extends CommonPageController{
         if(keyword.length()==0)return mv;
         mv.addObject("category",category);
         mv.addObject("keyword",keyword);
+        mv.addObject("row","");
         List<Map<String, Object>> res;
         String index="abstract";
         Gson gson=new Gson();
@@ -64,6 +65,53 @@ public class SearchController extends CommonPageController{
             }
         }else
             res=DubboServices.INSTANCE.esService.FuzzyQueryString(category,keyword,100);
+        if (res == null) {
+            mv.addObject("info","无查询结果");
+        }else{
+            mv.addObject("info","");
+            mv.addObject("res",res);
+        }
+        return mv;
+    }
+
+    @RequestMapping(value = "/search/{category}/{keyword}/{row}")
+    public ModelAndView dosearchByRow(ModelMap m, HttpSession session, @PathVariable String keyword, @PathVariable String category, @PathVariable String row) throws ServletException, IOException {
+
+        ModelAndView mv=super.get(m,"search",session);
+//        List<Pair<String, List<Pair<String, Pair<String, String>>>>> limits = new LinkedList<Pair<String, List<Pair<String, Pair<String, String>>>>>();
+//        LinkedList<Pair<String, Pair<String, String>>> fir=new LinkedList<Pair<String, Pair<String, String>>>();
+//        fir.add(new Pair("instruction",new Pair("matchQuery","Machine")));
+//        limits.add(new Pair("abstract",fir));
+        if(keyword.length()==0)return mv;
+        mv.addObject("category",category);
+        mv.addObject("keyword",keyword);
+        mv.addObject("row",row);
+        List<Map<String, Object>> res;
+        String index=row;
+        Gson gson=new Gson();
+        if(category.equals("expert")) {
+            index = "name";
+            res= DubboServices.INSTANCE.esService.FuzzyQuery(category, index, keyword, 100);
+            for (int i=0;i<res.size();i++){
+                String org="";
+                try{
+                    org=((JsonArray)gson.fromJson((String)res.get(i).get("orgs"), JsonArray.class)).get(0).getAsString();
+                }catch (Exception e){
+                    org="";
+                }
+                res.get(i).put("org",org);
+                int pubCount=0;
+
+                try{
+                    pubCount=((JsonArray)gson.fromJson((String)res.get(i).get("pubid"), JsonArray.class)).size();
+                }catch (Exception e){
+                    org="";
+                }
+                res.get(i).put("pubCount",pubCount);
+
+            }
+        }else
+            res= DubboServices.INSTANCE.esService.FuzzyQuery(category, index, keyword, 100);
         if (res == null) {
             mv.addObject("info","无查询结果");
         }else{

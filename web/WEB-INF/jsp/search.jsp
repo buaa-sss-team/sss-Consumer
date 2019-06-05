@@ -2,9 +2,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <html>
-<head>
-    <%@include file="head.jsp" %>
-</head>
+    <head>
+        <%@include file="head.jsp" %>
+    </head>
 <body>
 
 <%@ include file="nav.jsp" %>
@@ -15,11 +15,38 @@
     </svg>
     <div class="input-group input-group-lg" style="margin-top:5%;">
         <div class="input-group-prepend">
-            <span class="input-group-text" id="inputGroup-sizing-lg"><svg class="icon" aria-hidden="true" font-size="20px" color="#111111">
-            <use xlink:href="#icon-weibiaoti--"></use>
-        </svg></span>
+                <button class="btn btn-outline-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <c:if test='${row.equals("")}'>智能搜索</c:if>
+                    <c:if test='${row.equals("keywords")}'>关键词</c:if>
+                    <c:if test='${row.equals("title")}'>标题</c:if>
+                    <c:if test='${row.equals("abstract")}'>摘要</c:if>
+                    <c:if test='${row.equals("name")}'>名字</c:if>
+                    <c:if test='${row.equals("orgs")}'>机构</c:if>
+                    <c:if test='${row.equals("tags")}'>研究领域</c:if>
+
+                </button>
+                <div class="dropdown-menu">
+                    <c:if test='${category.equals("paper")}'>
+                      <a class="dropdown-item" href="/search/paper/${keyword}">智能搜索</a>
+                    <div role="separator" class="dropdown-divider"></div>
+                      <a class="dropdown-item" href="/search/paper/${keyword}/keywords">关键词</a>
+                      <a class="dropdown-item" href="/search/paper/${keyword}/title">标题</a>
+                      <a class="dropdown-item" href="/search/paper/${keyword}/abstract">摘要</a>
+                    </c:if>
+                    <c:if test='${category.equals("expert")}'>
+                        <a class="dropdown-item" href="/search/expert/${keyword}">智能搜索</a>
+                        <div role="separator" class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="/search/expert/${keyword}/name">名字</a>
+                        <a class="dropdown-item" href="/search/expert/${keyword}/orgs">机构</a>
+                        <a class="dropdown-item" href="/search/expert/${keyword}/tags">研究领域</a>
+                    </c:if>
+
+                </div>
         </div>
         <input type="text" class="form-control" id="searchInput" aria-describedby="inputGroup-sizing-lg" value="${keyword}">
+        <div class="input-group-append">
+            <button class="btn btn-outline-secondary" type="button" id="btnSearch">搜索</button>
+        </div>
     </div>
 
     <div class="row">
@@ -49,7 +76,7 @@
             <c:if test='${category.equals("expert")}'>
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
                     <li class="nav-item">
-                        <a class="nav-link " href="/search/paper/${keyword}"  aria-selected="false">论文</a>
+                        <a class="nav-link" href="/search/paper/${keyword}" aria-selected="false">论文</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link active" href="#" aria-selected="true">专家</a>

@@ -19,7 +19,7 @@
                 ${expert.name}
             </h5>
             <div style="color:#black;margin-left:4%;">${expert.position}</div>
-            <div style="color:#black;margin-left:4%;" >${expert.orgs}</div>
+            <div style="color:#black;margin-left:4%;" >${orgs}</div>
         </div>
     </div>
     <div style="height:20px;border-bottom: 1px solid black;">
@@ -56,8 +56,14 @@
             </div>
         </c:if>
     </div>
-    <div style="font-size:15px;font-weight:700;">摘要</div>
-    <p>${expert.tags}</p>
+    <div style="font-size:15px;font-weight:700;">研究领域</div>
+    <p>${tags}</p>
+    <div style="font-size:15px;font-weight:700;">著作</div>
+    <c:forEach items="${pubs}" var="pub">
+        <p>
+            <a href='/paper/${Integer.parseInt(pub.get("i"))>15000?pub.get("i")+1:pub.get("i")}'>${pub.get("title")}</a>
+        </p>
+    </c:forEach>
 
 </div>
 

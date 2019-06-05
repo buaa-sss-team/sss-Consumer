@@ -1,11 +1,13 @@
 package com.sss.consumer.controller;
 
+import com.google.common.reflect.TypeToken;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.sss.consumer.DubboServices;
 import com.sss.consumer.FileUtil;
+import com.sss.interfaces.hmodel.Expert;
 import com.sss.interfaces.hmodel.Paper;
 import com.sss.interfaces.hmodel.Patent;
 import com.sss.interfaces.hmodel.User;
@@ -22,6 +24,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 @Controller
 public class ResourcesPageController extends CommonPageController{
@@ -84,7 +88,32 @@ public class ResourcesPageController extends CommonPageController{
     @RequestMapping(value = "/expert/{id}", method = RequestMethod.GET)
     public ModelAndView getExpert(ModelMap m, @PathVariable String id, HttpSession session)throws ServletException, IOException {
         ModelAndView mv=get(m,"expert",session);
-        mv.addObject("expert", DubboServices.INSTANCE.commonService.getExpertInfo(Integer.valueOf(id)));mv.addObject("bought",isBought(true,Integer.valueOf(id),DubboServices.INSTANCE.commonService.getUserInfo((String)session.getAttribute("currentUserName"))));
+        Expert exp=DubboServices.INSTANCE.commonService.getExpertInfo(Integer.valueOf(id));
+        mv.addObject("expert", exp);
+        mv.addObject("bought",isBought(true,Integer.valueOf(id),DubboServices.INSTANCE.commonService.getUserInfo((String)session.getAttribute("currentUserName"))));
+
+        Gson gson=new Gson();
+        String[] orgarr=gson.fromJson(exp.getOrgs(),String[].class);
+        String orgStr="";
+        if(orgarr!=null)
+            for (String word:orgarr)orgStr+=", "+word;
+        if(orgStr.length()>2)mv.addObject("orgs",orgStr.substring(2));
+
+        String tagStr="";
+        JsonArray authors=gson.fromJson(exp.getTags(),JsonArray.class);
+        int tagCount=0;
+        if(authors!=null)
+            for(JsonElement author:authors){
+                tagStr+=", "+author.getAsJsonObject().get("t").getAsString();
+                if(tagCount++>30)break;
+            }
+        if(tagStr.length()>2)mv.addObject("tags",tagStr.substring(2));
+
+
+        List<Map<String,String>> pubs=gson.fromJson(exp.getPubid(), new TypeToken<List<Map<String, String>>>() {
+        }.getType());;
+        mv.addObject("pubs",pubs);
+
 
         return mv;
 
