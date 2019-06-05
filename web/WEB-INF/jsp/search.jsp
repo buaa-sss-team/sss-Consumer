@@ -33,6 +33,18 @@
                         <a class="nav-link" href="/search/expert/${keyword}" aria-selected="false">专家</a>
                     </li>
                 </ul>
+                <c:forEach items="${res}" var="item">
+                    <div class="card1" style="margin-top:10px;height:100px;width:1000px;margin-left:20px">
+                        <a href="/paper/${item.get("id")}" >
+                            <p style="font-size:17px;height:50px;"><c:out value='${item.get("title")}'></c:out></p>
+                        </a>
+                        <div class="row" style="margin-bottom: 10px;">
+                            <div style="font-size:13px;width:100px;font-weight:500px;margin-left:20px;">authorid</div>
+                            <div style="font-size:13px;width:100px;font-weight:500px;">时间：${item.get("year")}</div>
+                            <div style="font-size:13px;width:100px;font-weight:500px;">阅读量：${item.get("searchvalue")}</div>
+                        </div>
+                    </div>
+                </c:forEach>
             </c:if>
             <c:if test='${category.equals("expert")}'>
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -43,20 +55,21 @@
                         <a class="nav-link active" href="#" aria-selected="true">专家</a>
                     </li>
                 </ul>
+                <c:forEach items="${res}" var="item">
+                    <div class="card1" style="margin-top:10px;height:100px;width:1000px;margin-left:20px">
+                        <a href="/expert/${item.get("id")}" >
+                            <p style="font-size:17px;height:50px;"><c:out value='${item.get("name")}'></c:out></p>
+                        </a>
+                        <div class="row" style="margin-bottom: 10px;">
+                            <div style="font-size:13px;width:100px;font-weight:500px;margin-left:20px;">职称：${item.get("position")}</div>
+                            <div style="font-size:13px;width:100px;font-weight:500px;">单位：${item.get("org")}</div>
+                            <div style="font-size:13px;width:100px;font-weight:500px;">著作数量：${item.get("pubCount")}</div>
+                        </div>
+                    </div>
+                </c:forEach>
             </c:if>
 
-            <c:forEach items="${res}" var="item">
-                <div class="card1" style="margin-top:10px;height:100px;width:1000px;margin-left:20px">
-                    <a href="/paper/${item.get("id")}" >
-                        <p style="font-size:17px;height:50px;"><c:out value='${item.get("title")}'></c:out></p>
-                    </a>
-                    <div class="row" style="margin-bottom: 10px;">
-                        <div style="font-size:13px;width:100px;font-weight:500px;margin-left:20px;">authorid</div>
-                        <div style="font-size:13px;width:100px;font-weight:500px;">时间：${item.get("year")}</div>
-                        <div style="font-size:13px;width:100px;font-weight:500px;">阅读量：${item.get("searchvalue")}</div>
-                    </div>
-                </div>
-            </c:forEach>
+
         </div>
         <div class="col-md-4">
 

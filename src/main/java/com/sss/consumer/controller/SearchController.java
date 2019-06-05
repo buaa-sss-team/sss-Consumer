@@ -1,5 +1,8 @@
 package com.sss.consumer.controller;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 import com.sss.consumer.DubboServices;
 import javafx.util.Pair;
 import org.springframework.stereotype.Controller;
@@ -37,9 +40,28 @@ public class SearchController extends CommonPageController{
         mv.addObject("keyword",keyword);
         List<Map<String, Object>> res;
         String index="abstract";
+        Gson gson=new Gson();
         if(category.equals("expert")) {
             index = "name";
             res= DubboServices.INSTANCE.esService.FuzzyQuery(category, index, keyword, 100);
+            for (int i=0;i<res.size();i++){
+                String org="";
+                try{
+                    org=((JsonArray)gson.fromJson((String)res.get(i).get("orgs"), JsonArray.class)).get(0).getAsString();
+                }catch (Exception e){
+                    org="";
+                }
+                res.get(i).put("org",org);
+                int pubCount=0;
+
+                try{
+                    pubCount=((JsonArray)gson.fromJson((String)res.get(i).get("pubid"), JsonArray.class)).size();
+                }catch (Exception e){
+                    org="";
+                }
+                res.get(i).put("pubCount",pubCount);
+
+            }
         }else
             res=DubboServices.INSTANCE.esService.FuzzyQueryString(category,keyword,100);
         if (res == null) {
