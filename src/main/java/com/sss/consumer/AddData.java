@@ -40,7 +40,7 @@ public class AddData {
             int MOD=233,now=133;
             int cnt=0;
             while(true){
-            //while(cnt<10000){
+                //while(cnt<10000){
                 ++line;
                 tempString=reader.readLine();
                 if(tempString==null)break;
@@ -129,7 +129,7 @@ public class AddData {
             int MOD=233,now=133;
             int cnt=0;
             while(true){
-            //while(cnt<3000){
+                //while(cnt<3000){
                 try {
                     ++line;
 
@@ -558,24 +558,24 @@ public class AddData {
                 Expert x=new Expert();
                 //h_index
                 if(obj.keySet().contains("h_index"))
-                x.sethIndex(obj.getInteger("h_index"));
+                    x.sethIndex(obj.getInteger("h_index"));
                 //name
 
                 x.setName(obj.getString("name"));
                 //ncitation
                 if(obj.keySet().contains("n_citation"))
-                x.setnCitation(obj.getInteger("n_citation"));
+                    x.setnCitation(obj.getInteger("n_citation"));
                 //n_pubs
                 if(obj.keySet().contains("n_pubs"))
-                x.setnPubs(obj.getInteger("n_pubs"));
+                    x.setnPubs(obj.getInteger("n_pubs"));
                 //orgs
                 if(obj.keySet().contains("orgs"))
-                x.setOrgs(obj.getJSONArray("orgs").toJSONString());
+                    x.setOrgs(obj.getJSONArray("orgs").toJSONString());
                 //position
                 x.setPosition(obj.getString("position"));
                 //pubid
                 if(obj.keySet().contains("pubs"))
-                x.setPubid(obj.getJSONArray("pubs").toJSONString());
+                    x.setPubid(obj.getJSONArray("pubs").toJSONString());
                 //tags
                 if(obj.keySet().contains("tags"))
                     x.setTags(obj.getJSONArray("tags").toJSONString());
@@ -631,52 +631,52 @@ public class AddData {
 
                 //abstract
                 if(obj.keySet().contains("abstract"))
-                x.setAbs(obj.getString("abstract"));
+                    x.setAbs(obj.getString("abstract"));
                 //authorID
                 if(obj.keySet().contains("authors"))
-                x.setAuthorId(obj.getJSONArray("authors").toJSONString());
+                    x.setAuthorId(obj.getJSONArray("authors").toJSONString());
 
                 //c_number
                 if(obj.keySet().contains("n_citation"))
-                x.setcNumber(obj.getInteger("n_citation"));
+                    x.setcNumber(obj.getInteger("n_citation"));
                 //cost
                 x.setCost(now);
                 //doc_type
                 if(obj.keySet().contains("doc_type"))
-                x.setDocType(obj.getString("doc_type"));
+                    x.setDocType(obj.getString("doc_type"));
                 //ISBN
                 if(obj.keySet().contains("isbn"))
-                x.setIsbn(obj.getString("isbn"));
+                    x.setIsbn(obj.getString("isbn"));
                 //ISSN
                 if(obj.keySet().contains("issn"))
-                x.setIssn(obj.getString("issn"));
+                    x.setIssn(obj.getString("issn"));
                 //issue
                 if(obj.keySet().contains("issue"))
-                x.setIssue(obj.getString("issue"));
+                    x.setIssue(obj.getString("issue"));
                 //key_words
                 if(obj.keySet().contains("keywords"))
-                x.setKeywords(obj.getJSONArray("keywords").toJSONString());
+                    x.setKeywords(obj.getJSONArray("keywords").toJSONString());
                 //title
                 if(obj.keySet().contains("title"))
-                x.setTitle(obj.getString("title"));
+                    x.setTitle(obj.getString("title"));
                 //url
                 if(obj.keySet().contains("url"))
-                x.setUrl(obj.getString("url"));
+                    x.setUrl(obj.getString("url"));
 
 
 
                 //language
                 if(obj.keySet().contains("lang"))
-                x.setLang(obj.getString("lang"));
+                    x.setLang(obj.getString("lang"));
                 //org
                 if(obj.keySet().contains("venue"))
-                x.setOrg(obj.getString("venue"));
+                    x.setOrg(obj.getString("venue"));
                 //volume
                 if(obj.keySet().contains("volume"))
-                x.setVolume(obj.getString("volume"));
+                    x.setVolume(obj.getString("volume"));
                 //year
                 if(obj.keySet().contains("year"))
-                x.setYear(obj.getInteger("year"));
+                    x.setYear(obj.getInteger("year"));
 
                 //id
                 x.setId(pmp.get(obj.getString("id")));
@@ -758,9 +758,7 @@ public class AddData {
         System.out.println("!!!!!!!!");
         //String path="D:\\temp\\data\\paper_1k.txt";
         /*              文件路径                    */
-       // String path="D:\\temp\\data\\paper_1k-backup.txt";
-
-
+        // String path="D:\\temp\\data\\paper_1k-backup.txt";
 
 
 
