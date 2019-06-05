@@ -37,7 +37,10 @@ public class RegisterController extends CommonPageController {
         obj.addProperty("birthday",birthday);
         obj.addProperty("org",org);
         user.setInfo(gson.toJson(obj));
-        user.setType(1);
+        user.setType(0);
+        user.setCredit(0);
+        user.setBoughtThings("[]");
+
 
         if(DubboServices.INSTANCE.commonService.userSignIn(user)==0){
             session.setAttribute("currentUserName",userName);

@@ -1,6 +1,7 @@
 package com.sss.consumer;
 
 import com.sss.interfaces.IDBService;
+import com.sss.interfaces.IESService;
 import com.sss.interfaces.ITestService;
 import com.sss.interfaces.dao.IHDBdao;
 import com.sss.interfaces.service.*;
@@ -21,6 +22,7 @@ public class ServiceInitHelper implements ServletContextListener {
 //        DubboServices.INSTANCE.checkService= ctx.getBean(CheckService.class);
 //        DubboServices.INSTANCE.requestService= ctx.getBean(RequestService.class);
         DubboServices.INSTANCE.commonService=ctx.getBean(CommonService.class);
+        DubboServices.INSTANCE.esService=ctx.getBean(IESService.class);
     }
 
     public void contextInitialized(ServletContextEvent servletContextEvent) {

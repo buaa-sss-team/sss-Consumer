@@ -4,9 +4,6 @@
 <html>
 <head>
     <%@include file="head.jsp" %>
-    <link rel="stylesheet" href="../static/css/main.css">
-    <title>SSS - 学术社群服务</title>
-    <script src="../static/js/index.js"></script>
 </head>
 <body>
 
@@ -53,8 +50,6 @@
                     <input type="text" class="form-control" id="regOrg" name="org" placeholder="">
                 </div>
                 <button type="submit" class="btn btn-primary" style="margin-top: 24px;width: 96px">注册</button>
-
-
             </form>
         </div>
         <div class="col-md-4">

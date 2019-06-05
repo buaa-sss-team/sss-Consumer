@@ -4,9 +4,6 @@
 <html>
 <head>
     <%@include file="head.jsp" %>
-    <link rel="stylesheet" href="../static/css/main.css">
-    <title>SSS - 学术社群服务</title>
-    <script src="../static/js/index.js"></script>
 </head>
 <body>
 
@@ -28,30 +25,65 @@
         </div>
     </div>
 
+
     <div class="row">
-        <div class="col-md-8">
-            <h5>
+        <div class="col-md-9">
+            <h5 class="title">
                 ${paper.title}
             </h5>
-            <p class="text-secondary">${paper.year}</p>
-            <p class="text-secondary">${paper.isbn}</p>
-            <p>${paper.authorId}</p>
+            <h6 class="year">作者：authorId</h6>
+            <h6 class="year">SBN：${paper.isbn}</h6>
+            <h6 class="year">发表年份:${paper.year}</h6>
+            <div class="row1" >
+                <h6 style="margin-top:20px;">摘要:</h6>
+                <p>${paper.abs}</p>
+            </div>
+            <h6 style="fontsize:40px;font-weight:500;margin-top:30px;">关键字:
+                <c:forEach items="${paper.keywords}" var="item">
+                    <c:out value='${item}'></c:out>
+                </c:forEach>
+            </h6>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-3" >
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">阅览次数</h5>
-                    <p class="card-text">${paper.searchvalue}</p>
-                    <h5 class="card-title">下载次数</h5>
-                    <p class="card-text">${paper.downvalue}</p>
+                    <div class="row" style="margin-top:10px;">
+                        <h5 class="contentN" >阅览次数</h5>
+                        <p class="contentM">1${paper.searchvalue}</p>
+                    </div>
+                    <div class="row" style="margin-top:10px;">
+                        <h5 class="contentN">下载次数</h5>
+                        <p class="contentM">1${paper.downvalue}</p>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <c:if test="${bought}">
+                        <div class="dropdown">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                资源下载
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <c:forEach items="${urls}" var="url">
+                                    <a class="dropdown-item" href="${url}">${url}</a>
+                                </c:forEach>
+
+                            </div>
+                        </div>
+                    </c:if>
+                    <c:if test="${!bought}">
+                        <a href="/buy/paper/${paper.id}"><button class="btn btn-secondary">购买全文</button></a></li>
+                    </c:if>
+
+
+
                 </div>
             </div>
         </div>
     </div>
-    <h6>摘要</h6>
-    <p>${paper.abs}</p>
+
 
 </div>
+
 
 <script src="../static/js/alertmodal.js"></script>
 

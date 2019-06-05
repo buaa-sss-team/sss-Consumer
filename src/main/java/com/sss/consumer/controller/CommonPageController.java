@@ -22,8 +22,7 @@ public class CommonPageController {
         ModelAndView mv = new ModelAndView(viewName);
         String currentUserName= (String) session.getAttribute("currentUserName");
         if(currentUserName!=null && currentUserName.length()>0) {
-            User user = new User();
-            user.setAccount(currentUserName);
+            User user= DubboServices.INSTANCE.commonService.getUserInfo((String)session.getAttribute("currentUserName"));
             mv.addObject("user",user);
         }else mv.addObject("user",null);
         return mv;

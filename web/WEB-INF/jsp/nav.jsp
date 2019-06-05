@@ -24,18 +24,18 @@
 <%--                    </span>--%>
 <%--                </div><!-- /input-group -->--%>
     <div class="input-group input-group-sm" style="margin-top:5px; width:auto;padding-left: 0.8rem;padding-right: 0.8rem">
-        <input type="text" class="form-control" placeholder="" aria-describedby="button-navsearch">
+        <input type="text" class="form-control" placeholder="" aria-describedby="btnNavSearch" id="inputNavSearch">
         <div class="input-group-append">
-            <button class="btn btn-primary" type="button" id="button-navsearch" style="color:white;">搜索</button>
+            <button class="btn btn-primary" type="button" id="btnNavSearch" style="color:white;">搜索</button>
         </div>
     </div>
             </li>
             <c:if test="${user==null}">
                 <li class="nav-item">
-                    <a class="nav-link" href="login">登录</a>
+                    <a class="nav-link" href="/login">登录</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="register">注册</a>
+                    <a class="nav-link" href="/register">注册</a>
                 </li>
             </c:if>
             <c:if test="${user!=null}">
@@ -44,7 +44,11 @@
                             ${user.getAccount()}
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="#">个人信息</a>
+                        <a class="dropdown-item" href="/account">个人信息</a>
+                        <a class="dropdown-item" href="/bought">已买到的资源</a>
+                        <c:if test="${user.type==-1}">
+                            <a class="dropdown-item" href="/review">审核专家申请</a>
+                        </c:if>
                         <a class="dropdown-item" href="/logout">登出</a>
                     </div>
                 </li>

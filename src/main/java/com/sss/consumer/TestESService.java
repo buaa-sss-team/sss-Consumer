@@ -19,7 +19,7 @@ public class TestESService {
 
         List<Pair<String, List<Pair<String, Pair<String, String>>>>> limits = new LinkedList<Pair<String, List<Pair<String, Pair<String, String>>>>>();
         LinkedList<Pair<String, Pair<String, String>>> fir=new LinkedList<Pair<String, Pair<String, String>>>();
-        fir.add(new Pair("instruction",new Pair("matchQuery","sss")));
+        fir.add(new Pair("instruction",new Pair("matchQuery","Machine")));
         limits.add(new Pair("abstract",fir));
         List<Map<String, Object>> res = hesservice.Query("paper",limits, 100);
         if (res == null) {
