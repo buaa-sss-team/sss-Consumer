@@ -31,7 +31,7 @@
             <h5 class="title">
                 ${paper.title}
             </h5>
-            <h6 class="year">作者：authorId</h6>
+            <h6 class="year">作者:authorId</h6>
             <h6 class="year">SBN：${paper.isbn}</h6>
             <h6 class="year">发表年份:${paper.year}</h6>
             <div class="row1" >
@@ -49,11 +49,11 @@
                 <div class="card-body">
                     <div class="row" style="margin-top:10px;">
                         <h5 class="contentN" >阅览次数</h5>
-                        <p class="contentM">1${paper.searchvalue}</p>
+                        <p class="contentM">${paper.searchvalue}</p>
                     </div>
                     <div class="row" style="margin-top:10px;">
                         <h5 class="contentN">下载次数</h5>
-                        <p class="contentM">1${paper.downvalue}</p>
+                        <p class="contentM">${paper.downvalue}</p>
                     </div>
                 </div>
                 <div class="card-body">
