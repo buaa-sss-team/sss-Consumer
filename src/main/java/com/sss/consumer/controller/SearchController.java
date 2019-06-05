@@ -20,11 +20,15 @@ import java.util.Map;
 
 @Controller
 public class SearchController extends CommonPageController{
-    @RequestMapping(value = "/search")
-    public ModelAndView get(ModelMap m, HttpSession session) throws ServletException, IOException {
+    @RequestMapping({"/search/{category}","/search"})
+    public ModelAndView get(ModelMap m, HttpSession session, @PathVariable String category) throws ServletException, IOException {
 
         ModelAndView mv=super.get(m,"search",session);
         mv.addObject("info","输入关键词开始搜索");
+        if(category==null||category=="")category="paper";
+        mv.addObject("category",category);
+        mv.addObject("keyword","");
+        mv.addObject("row","");
         return mv;
     }
     @RequestMapping(value = "/search/{category}/{keyword}")
@@ -63,8 +67,19 @@ public class SearchController extends CommonPageController{
                 res.get(i).put("pubCount",pubCount);
 
             }
-        }else
-            res=DubboServices.INSTANCE.esService.FuzzyQueryString(category,keyword,100);
+        }else {
+            res = DubboServices.INSTANCE.esService.FuzzyQueryString(category, keyword, 100);
+            for (int i=0;i<res.size();i++){
+                String authorname="";
+                try{
+                    authorname=((JsonArray)gson.fromJson((String)res.get(i).get("authorID"), JsonArray.class)).get(0).getAsJsonObject().get("name").getAsString();
+                }catch (Exception e){
+                    authorname="";
+                }
+                res.get(i).put("authorname",authorname);
+
+            }
+        }
         if (res == null) {
             mv.addObject("info","无查询结果");
         }else{
@@ -90,7 +105,6 @@ public class SearchController extends CommonPageController{
         String index=row;
         Gson gson=new Gson();
         if(category.equals("expert")) {
-            index = "name";
             res= DubboServices.INSTANCE.esService.FuzzyQuery(category, index, keyword, 100);
             for (int i=0;i<res.size();i++){
                 String org="";
@@ -110,8 +124,20 @@ public class SearchController extends CommonPageController{
                 res.get(i).put("pubCount",pubCount);
 
             }
-        }else
-            res= DubboServices.INSTANCE.esService.FuzzyQuery(category, index, keyword, 100);
+        }else {
+            res = DubboServices.INSTANCE.esService.FuzzyQuery(category, index, keyword, 100);
+            for (int i=0;i<res.size();i++){
+                String authorname="";
+                try{
+                    authorname=((JsonArray)gson.fromJson((String)res.get(i).get("authorID"), JsonArray.class)).get(0).getAsJsonObject().get("name").getAsString();
+                }catch (Exception e){
+                    authorname="";
+                }
+                res.get(i).put("authorname",authorname);
+
+            }
+        }
+
         if (res == null) {
             mv.addObject("info","无查询结果");
         }else{
